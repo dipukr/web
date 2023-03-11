@@ -1,0 +1,2281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java</title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: whitesmoke;
+        margin-top: 20px;
+        width: 54%;
+        padding-left: 3%;
+        padding-right: 3%;
+        min-height: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+        padding-top: 40px;
+        background-color: white;
+        box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        padding-bottom: 100px;
+      }
+      table.mono {
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        width: 100%;
+        font-size: 16px;
+        word-spacing: -1px;
+        font-family: "DejaVu Serif";
+        background: rgba(0,0,0,0.01);
+        color: #28282B;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 4px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+      table.mono thead tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.mono thead tr th {
+        background-color: #009879;
+        padding: 8px 20px;
+        color: #ffffff;
+        text-align: left;
+        font-weight: normal;
+      }
+      table.mono tbody tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.mono tbody tr td {
+        padding: 15px 25px;
+      }
+      table.mono tbody tr td ul {
+        padding-left: 40px;
+        padding-top: 2px;
+        padding-bottom: 5px;
+        list-style: square;
+        font-size: 15px;
+      }
+      table.mono tbody tr td ul code {
+        font-size: 14px;
+      }
+      table.dual {
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        width: 100%;
+        color: #28282B;
+        background: rgba(0,0,0,0.01);
+        font-size: 16px;
+        word-spacing: -1px;
+        font-family: "DejaVu Serif";
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 4px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+      table.dual thead tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.dual thead tr th {
+        background-color: #009879;
+        padding: 8px 20px;
+        color: #ffffff;
+        text-align: center;
+        font-weight: normal;
+      }
+      table.dual tbody tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.dual tbody tr td {
+        padding: 5px 5px;
+        border: 2px solid #009879;
+        border-top: none;
+        font-size: 15px;
+        text-align: center;
+      }
+      table.dual tbody tr td:first-child {
+        color:firebrick;
+      }
+      table.dual tbody tr td:nth-child(3) {
+        color:firebrick;
+      }
+      table.list {
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        width: 100%;
+        font-size: 16px;
+        word-spacing: -1px;
+        font-family: "DejaVu Serif";
+        background: rgba(0,0,0,0.01);
+        color: #28282B;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 4px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+      table.list thead tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.list thead tr th {
+        background-color: #009879;
+        padding: 8px 20px;
+        color: #ffffff;
+        text-align: left;
+        font-weight: normal;
+      }
+      table.list tbody tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.list tbody tr td {
+        padding: 15px 50px;
+        line-height: 1.3;
+      }
+      table.list tbody tr td ul {
+        list-style: square;
+      }
+      table.list tbody tr td ul li ul {
+        padding-left: 40px;
+        font-size: 15px;
+      }
+      em {
+        color: brown;
+        font-weight: 500;
+        font-style: normal;
+      }
+      .just {
+        text-align: justify;
+        text-justify: inter-word;
+      }
+      pre {
+        background: #f8f8f8;
+        border: 3px solid #eeeeee;
+        font-size: 14px;
+        line-height: normal;
+        padding-top: 0px;
+        overflow: auto;
+        max-width: 99.2%;
+        font-family: "Source Code Pro";
+        width: 100%;
+        word-spacing: -2px;
+      }
+      code {
+        font-size: 16px;
+        font-family: "Consolas";
+        color: darkblue;
+      }
+      table.mono tbody tr td table {
+        border-collapse: collapse;
+        border: 2px solid #009879;
+        color: #28282B;
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 15px;
+      }
+      table.mono tbody tr td table tr th {
+        background: #009879;
+        color: white;
+        font-weight: normal;
+        padding: 4px 5px;
+        font-size: 16px;
+        border-bottom: 2px solid #009879;
+        border-left: 4px solid #009879;
+        border-right: 4px solid #009879;
+      }
+      table.mono tbody tr td table tr td {
+        padding: 10px 20px;
+        margin: none;
+        border-bottom: 2px solid #009879;
+        border-left: 4px solid #009879;
+        border-right: 4px solid #009879;
+      }
+      table.mono tbody tr td table tr td code {
+        font-size: smaller;
+      }
+      table.mono tbody tr td table.one {
+        border-collapse: collapse;
+        border: 2px solid #009879;
+        color: #28282B;
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 15px; 
+      }
+      table.mono tbody tr td table.one tr {
+        overflow: hidden;
+        border-radius: 4px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+      table.mono tbody tr td table.one tr th {
+        background: #009879;
+        color: white;
+        font-weight: normal;
+        padding: 4px 5px;
+        font-size: 16px;
+        text-align: center;
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.mono tbody tr td table.one tr td {
+        padding: 10px 20px;
+        margin: none;
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      strong {
+        font-style: normal;
+        font-weight: normal;
+        color:purple;
+      }
+    </style>
+  </head>
+  <body>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Java</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 90%;">
+              <tr>
+                <td>
+                  Java is a high-level, general purpose, object-oriented, generic, concurrent and
+                  functional programming language.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Java enables programmer to <em>write once, run anywhere (WORA)</em>, meaning compiled java code can
+                  run on all platform without the need to recompile.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Java applications are typically compiled to bytecode that can run on any JVM
+                  regardless of the underlying computer architecture.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Java runtime provides dynamic capabilities such as reflection and runtime code modification
+                  that are typically not available in traditional compiled languages.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="dual">
+      <thead>
+        <tr>
+          <th colspan="2">Features of Java</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Object-oriented</td>
+          <td>Java is a complete object-oriented programming language</td>
+        </tr>
+        <tr>
+          <td>Multithreaded</td>
+          <td>Java has support for multithreading at the language level</td>
+        </tr>
+        <tr>
+          <td>Distributed</td>
+          <td>Java support distributed computing</td>
+        </tr>
+        <tr>
+          <td>Dynamic</td>
+          <td>Java support dynamic code modification through reflection</td>
+        </tr>
+        <tr>
+          <td>Simple</td>
+          <td>Java is easy to learn and simple to use</td>
+        </tr>
+        <tr>
+          <td>Portable</td>
+          <td>Java program is compiled to bytecode insted of machine code</td>
+        </tr>
+        <tr>
+          <td>Secure</td>
+          <td>Because execution of bytecode is under the control of the JVM</td>
+        </tr>
+        <tr>
+          <td>Compiled</td>
+          <td>Java program is compiled into bytecode and then interpreted</td>
+        </tr>
+        <tr>
+          <td>Interpreted</td>
+          <td>Compiled java program is executed under JVM and not on hardware</td>
+        </tr>
+        <tr>
+          <td>Huge Community</td>
+          <td>Java has huge community support</td>
+        </tr>
+        <tr>
+          <td>High Performance</td>
+          <td>Java bytecode executes with high performance because of JIT</td>
+        </tr>
+        <tr>
+          <td>Architecture Neutral</td>
+          <td>Java is independent of hardware platform</td>
+        </tr>
+        <tr>
+          <td>Platform Independent</td>
+          <td>Java is independent of operating system platform</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Java Developement Kit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Java development kit is collection of tools which is used to compile, debug and run <br> a program 
+            developed using the java technology. JDK is the superset of JRE which <br> is superset of JVM.
+            JDK includes a JRE, a compiler, a debugger, an archiver and <br> other tools that 
+            are used in java development.<br> <br>
+            <table style="width: 85%;">
+              <tr>
+                <td><em>javac (compiler)-</em> that read java source code and translates
+                them into bytecode which is executed by the JVM</td>
+              </tr>
+              <tr>
+                <td><em>javadoc (documentation generator) -</em> that read java source code and
+                  generates documentation</td>
+              </tr>
+              <tr>
+                <td><em>javap (disassembler) -</em> that is used to disassemble java class file</td>
+              </tr>
+              <tr>
+                <td>
+                  <em>jdb (debugger) -</em> command-line debugging tool used to find and
+                  fix <br> bugs in java programs
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <em>jar (archiver) -</em> general purpose java archiver
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Java Virtual Machine</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Java virtual machine (JVM) is an abstract computing machine which loads, verifies
+            and executes bytecode.
+            Bytecode is the instruction set of the java virtual machine.
+            Most well known JVM implementations are Java Hotspot Performance Engine and 
+            Eclipse OpenJ9. <br> <br>
+            Java virtual machine is divided into three main subsystem:
+            <ul>
+              <li>Class loader subsystem</li>
+              <li>Runtime data area</li>
+              <li>Execution engine</li>
+            </ul> <br>
+            <table style="width: 88%;">
+              <tr>
+                <td>
+                  <i>Class loader subsystem</i> is responsible for loading, linking, verifying and
+                  initializing java class file
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <i>Runtime data areas</i> contain class area, heap area, stack areas and <br>
+                  PC registers
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <i>Execution engine</i> contains an bytecode interpreter, JIT compiler and memory
+                  manager
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Class Loader</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            The class loader is part of the java virtual machine which is used to load class files
+            during execution of a program. Application classes and all the dependencies from
+            imported <i>JARs</i> are loaded by the <em>system class loader.</em>
+            <br> <br>
+            <table style="width: 90%;">
+              <tr>
+                <td><em>Bootstrap class loader</em> loads JDK core classes (rt.jar)</td>
+              </tr>
+              <tr>    
+                <td><em>Extension class loader</em> loads classes defined in <code>lib\ext</code> directory</td>
+              </tr>
+              <tr>
+                <td><em>System class loader</em> loads classes from the classpath</td>
+              </tr>
+              <tr>
+                <td><em>Custom class loader</em> loads classes from third party libraries</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Bytecode Verifier</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            When a class loader presents the bytecodes of a newly loaded java class file to the JVM, these bytecodes are
+            first inspected by a <em>verifier</em>. The <em>verifier</em> checks that the instructions cannot perform actions that are obviously damaging. <br> <br>
+            Here are some of the checks that the verifier carries out:
+            <ul>
+              <li>The runtime stack does not overflow</li>
+              <li>Variables are initialized before they are used</li>
+              <li>Method calls match the types of object references</li>
+              <li>Local variable accesses fall within the runtime stack</li>
+              <li>Rules for accessing private data and methods are not violated</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Linking</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 88%;">
+              <tr>
+                <td>
+                  <i>Verify -</i> Bytecode verifier will verify whether the generated bytecode <br> is proper
+                  or not if verification fails we will get the verification error
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <i>Prepare -</i> For all static variables memory will be allocated
+                  and assigned with default values
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <i>Resolve -</i> All symbolic memory references are replaced with the original
+                  references from method area
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="dual">
+      <thead>
+        <tr>
+          <th colspan="2">Types of Memory</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="width: 19%;">Class Area</td>
+          <td style="text-align: left; padding: 8px 8px;">
+            Class elements like constant pool, class fields, constructor codes, method codes are stored here.
+            All executing threads share this part of the JVM memory area. </td>
+        </tr>
+        <tr>
+          <td>Heap</td>
+          <td style="text-align: left; padding: 8px 8px;">Heap is the area of memory where states
+            of the each objects are stored.
+            Heap memory is not
+            thread-safe as it is shared by all threads of a program. Heap is dynamic area of memory.
+          </td>
+        </tr>
+        <tr>
+          <td>Stack</td>
+          <td style="text-align: left; padding: 8px 8px;">
+            Stack memory stores information about the active methods of a java program
+            which grows and shrinks as new methods are added and <br> removed to stack memory. <br> 
+            Stack memory gets automatically allocated and deallocated.  <br>
+            Access to stack memory is fast as compared to heap memory. <br>
+            Stack memory is thread-safe as each thread has its own stack memory. <br>
+          </td>
+        </tr>
+        <tr>
+          <td>Native Stack</td>
+          <td style="text-align: left; padding: 8px 8px;">Stack memory stores information about the active native
+            methods.</td>
+        </tr>
+        <tr>
+          <td>PC Registers</td>
+          <td style="text-align: left; padding: 8px 8px;">
+            PC registers stores the address of currently executing instruction.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Constant Pool</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Constant pool is a part of .class file that contains constants needed to run the code of that class.
+            These constants include literals specified by the programmer and symbolic references generated
+            by compiler. <br> <br> Symbolic references are basically names of fields, methods and classes
+            referenced from the code. These references are used by the linker to link our code.<br> <br>
+            <pre>
+
+            System.out.println("Hello, world!");
+
+            0:   getstatic #2               
+            3:   ldc #3                                                         
+            5:   invokevirtual #5
+
+            #2 Field  java/lang/System.out:Ljava/io/PrintStream;
+            #3 String Hello, world!
+            #5 Method java/io/PrintStream.println:(Ljava/lang/String;)V
+            </pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>JAR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            JAR is a file format used to aggregate many java class files
+            and associated metadata and resources into one file for distribution. <br> <br>
+            Primary motivation for its development was so that java applets and their requisite components
+            (.class files, images and sounds files) can be downloaded to a browser in a single HTTP transaction,
+            rather than opening a new connection for each file. <br> <br>
+            The JAR format also supports compression, which reduces the size of the file and
+            improves download time still further.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Local Variable</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding-right: 40px;">
+            <ul>
+              <li>Variable declared inside method is called local variable</li>
+              <li>Local variables are stored on stack</li>
+              <li>Local variables must be initialized before first use</li>
+              <li>Local variables can only be accessed by the code inside the method</li>
+              <li>Memory for local variable is allocated when corresponding method is called</li>
+              <li>Local vars exist only while the method in which they are declared is executing</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Instance Variable</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <li>Instance variables are created inside class and outside method</li>
+              <li>Instance variables belongs to the objects of the class</li>
+              <li>Each objects of a class have separate copy of the instance variables</li>
+              <li>Instance variables are stored in the heap area of memory</li>
+              <li>Instance variables are initialized to their default values</li>
+              <li>Instance variables represents state of the object</li>
+              <li>Instance variables are bound to the object</li>
+              <li>Instance variables are accessed using object of the class</li>
+              <li>Instance variables can not be accessed directly from static context</li>
+              <li>Instance variables are created when an object of the class is created</li>
+              <li>Instance variables are destroyed when the object is destroyed</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Static Variable</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 15px 40px;">
+            <ul>
+              <li>Static variables are created inside class and outside method with <em>static</em> keyword</li>
+              <li>Static variables are those vars that are common to all the instances of the class</li>
+              <li>Single copy of the static var is created and shared among all class instances</li>
+              <li>Static variables are stored in the class area of the java virtual machine</li>
+              <li>Static variables are initialized only once when the class is loaded</li>
+              <li>Static variables belongs to the class and not to object</li>
+              <li>Static variables can used without initializing</li>
+              <li>Static variables can be accessed directly by the class name</li>
+              <li>Single copy of the static variable is shared by all instances of the class</li>
+              <li>Lifetime of an static variable is the same as the lifetime of the program</li>
+              <li>Static variables can be accessed by both instance method and static method</li>
+              <li>Memory allocation only happens once when the class is loaded in the memory</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Reference Variable</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding-right: 30px;">
+            <ul>
+              <li>Reference variables are used to store object address or <code>null</code> value</li>
+              <li>Reference variables are used to access members of the object</li>
+              <li>Default value of reference variable is <code>null</code></li>
+              <li>Accessing <code>null</code> reference results in <code>NullPointerException</code></li>
+              <li>A reference can points to objects of the same class as well as its subclasses</li>
+              <li>Classes, interfaces, arrays, enumerations and annotations are reference types</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Var Keyword</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Var keyword support local variable type inference. <em>Type inference</em> is a technique used 
+            by the java compiler at compile time to determine type of a variable based on the type of initialization
+            expression. <br> <br>
+            Restriction on var keyword:
+            <ul>
+              <li>We can not use <em>var</em> for instance variable or static variable</li>
+              <li>We can use <em>var</em> keyword only for local variable</li>
+              <li>We can not assign a var type variable to null</li>
+              <li>We can not use <em>var</em> for method signature</li>
+              <li>We can not use <em>var</em> in lambda expression</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Static Block</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 96%;">
+              <tr>
+                <td>
+                  The <em>static block</em> is a block of statement inside a java class that will
+                  be executed when a class is first loaded into the JVM
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  A <em>static block</em> helps to initialize the static data members just like
+                  constructors helps us to initialize instance members
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  A <em>static block</em> executes once in the life cycle of any program, another
+                  property of static block is that it executes before the main method
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Instance Initializer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <li>Instance initialization blocks are used to initialize the instance data members</li>
+              <li>Instance initialization blocks runs each time a new instance is created</li>
+              <li>Instance initialization blocks comes in the order in which they appear</li>
+              <li>Order of execution:
+                <ul>
+                  <li>Instance initialization block of the superclass</li>
+                  <li>Constructors of the superclass</li>
+                  <li>Instance initialization blocks of the class</li>
+                  <li>Constructors of the class</li>
+                </ul>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Method</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 85%;">
+              <tr>
+                <td>
+                  Method is a reusable ordered sequence or block of code which takes a set of parameters
+                  as input and produces an output
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  The values that are passed to the method is called actual parameters
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  The variables defined by the method that receives values is called formal parameter
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Methods are used to perform a simple task of the program
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Method header provides interface to the other methods
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Methods form the object's interface with the outside world
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Objects define their interaction with the outside world through the methods that they expose
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Instance Method</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <li>Instance method is a method that belongs to instances of a class</li>
+              <li>Instance method defines behaviour of the objects</li>
+              <li>Instance method can be overriden</li>
+              <li>Instance method can be both abstract and concrete</li>
+              <li>Instance method can refer to this and super keyword</li>
+              <li>Instance method can not be accessed from the static context</li>
+              <li>Instance method can access both static variables and static methods</li>
+              <li>Instance method can access both instance variables and instance methods</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Static Method</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <li>Static method is a method which belongs to the class and not to the object</li>
+              <li>Static method can not access instance variables or methods of the class</li>
+              <li>Static method can only access static variables or methods of the class</li>
+              <li>Static method is associated with the class in which it is defined</li>
+              <li>Static method cannot refer to <em>this</em> or <em>super</em> keyword</li>
+              <li>Static method is statically bound to method call</li>
+              <li>Static method can be accessed directly by the class name without any object</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Wrapper Class</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <li>Wrapper classes provide a way to use primitive data types as objects</li>
+              <li>For each primitive types there is corresponding wrapper class</li>
+              <li>Wrapper classes resides in <em>java.lang</em> package</li>
+              <li>All of the wrapper classes are immutable</li>
+              <li>Generics can only accepts reference types</li>
+              <li>Java does not support <em>template</em> of primitive types</li>
+              <li>Wrapper classes are used extensively with <em>Collection API</em> classes</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Autoboxing</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Automatic conversion of primitive types to corresponding wrapper class is known
+            as autoboxing. Autoboxing is performed at compile time by the compiler.<br> <br>
+            Java compiler applies autoboxing when a primitive value:    
+            <ul>
+              <li>Assigned to a variable of the corresponding wrapper class</li>
+              <li>Passed as parameter to a method that expects an object of the corresponding wrapper class</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Unboxing</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Automatic conversion of wrapper class to corresponding primitive types is known
+            as unboxing. Unboxing is performed at compile time by the compiler.<br> <br>
+            Java compiler applies unboxing when a wrapper class object:
+            <ul>
+              <li>Assigned to a variable of the corresponding primitive type</li>
+              <li>Passed as parameter to a method that expects an argument of corresponding primitive type</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Object Oriented Programming</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 92%;">
+              <tr>
+                <td>
+                  Object oriented programming is way of programming oriented towards the objects.
+                  An object oriented program is basically a collection of objects and
+                  relationship and communication among them. Related data and code that operate on
+                  that data is considered as object.
+                </td>
+              </tr>
+              <tr>
+                <td>Four main concept of OOP are abstraction, encapsulation, inheritance
+                  and polymorphism which help us to write modular, reusable, extensible and generic software
+                  system.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Encapsulation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding-right: 32px;">
+            Encapsulation is the process of wrapping of related data and code into a single unit
+            which modularizes our software system. Encapsulation also help us to achieve data
+            hiding which is the process of hiding sensitive data of the objects from the outside world.
+            Encapsulation is java is achieved through class. <br> <br>
+            <table class="one" style="width: 85%; text-align: left;">
+              <tr>
+                <th>Why Encapsulation</th>
+              </tr>
+              <tr>
+                <td>Encapsulation help us to make fields of a class read-only or write-only</td>
+              </tr>
+              <tr>
+                <td>Flexible - the programmer can change one part of the code without affecting
+                  other parts of code (bacause modular)</td>
+              </tr>
+              <tr>
+                <td>Security - increased security of data</td>
+              </tr>
+              <tr>
+                <td>Program is well organized so easy to maintain</td>
+              </tr>
+              <tr>
+                <td>Encapsulation gives a clear structure to the programs</td>
+              </tr>
+              <tr>
+                <td>Control - better control of class attributes and methods</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Data Hiding</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 90%;">
+              <tr>
+                <td>
+                  Data hiding is the process of hiding sensitive data of the object from the user of the object
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Data hiding is a programming concept which protects the data from direct modification
+                  by other parts of the program
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Data hiding is achieved by declaring fields as private and providing setter and getter
+                  methods for each field to access and update the value
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Data hiding is closely related to abstraction and encapsulation
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Data hiding is achieved through encapsulation
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Abstraction</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 93%;">
+              <tr>
+                <td>Abstraction is a mechanism of hiding unnecessary details and showing only essential
+                  details to the user by separating interface from its implementation.</td>
+              </tr>
+              <tr>
+                <td>
+                  Abstraction also generalises by capturing the common essense among unrelated classes.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Main goal of the abstraction it to reduce the complexity of the design and implementation
+                  process of software system.
+                </td>
+              </tr>
+              <tr>
+                <td>Abstraction can be achieved through interface and abstract class.</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Inheritance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding-right: 37px;">
+            Inheritance is a mechanism by which one class acquires the attributes (fields) and functionalities
+            (methods) of another existing class. 
+            Inheritance enable us to create modules that does not need to be changed when new attributes
+            or functionalities is added to the class.
+            Inheritance helps to create reusable and extensible
+            software components. Reusability helps us to avoid duplicate code and data.
+            Inheritance helps us to define relationship among classes.
+            <br> <br>
+            <table style="width: 85%;">
+              <tr>
+                <td>Single inheritance - when a class inherits another class</td>
+              </tr>
+              <tr>
+                <td>Multi-level inheritance - when a class inherits derived class</td>
+              </tr>
+              <tr>
+                <td>Hierarchical inheritance - when a class is inherited by many classes</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Polymorphism</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Polymorphism refers to <em>one-to-many</em> relationship, which allows
+            an entity such as an variable, a method or an object to have more than
+            one form. 
+            Polymorphism enables us to deal with generalities and let the compiler and
+            runtime environment to handle the specific. <br> <br>
+            Polymorphism in java can be achieved through:
+            <ul>
+              <li>Method overloading</li>
+              <li>Method overriding</li>
+            </ul> <br>
+            <ul style="font-size: 16px; padding-left: 25px;">
+              <li>Many methods can have one common name</li>
+              <li>One method can accept many types of arguments</li>
+              <li>One method header can be associated with many method body</li>
+              <li>One type of reference variable can be used to access many type of objects</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Class</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            A class is a blueprint which defines the attributes (fields) and behaviours (methods)
+            common to a number of objects. A class is a user defined blueprint based on which
+            objects are created. Class is the unit of modularization in object oriented program.
+            <br> <br>
+            A class is defined using class keyword. A class body contains
+            contains specification <br> of a set of fields which defines attributes
+            of the objects and a set of methods which defines behaviours of the objects.<br> <br>
+            <pre style="width: 40%; float: left;">
+
+    class Snake {
+        Size size;
+        Color color;
+        Point position;
+        void move(Dir dir) {}
+        void eat(Food food) {}
+    }
+            </pre>
+            <pre style="width: 58%; float: right;">
+             
+  Defines attributes and behaviours of snakes.
+  Behaviours are used to change states.
+  State is combination of attributes values.
+
+     Attributes = {size, color, position}
+     Behaviours = {move, eat}
+     Attributes = Form
+            </pre> <br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Object</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <li>Object is a concrete entity with a set of attributes and a set of behaviours</li>
+              <li>Object also have identify, lifetime and scope and belongs to a class</li>
+              <li>Fields defines the attributes of objects instantiated from a class</li>
+              <li>Methods defines the behaviors of objects instantiated from a class</li>
+              <li>Objects maintain state in instance variables (attributes)</li>
+              <li>Objects are allocated from the heap and accessed by reference variables</li>
+              <li>Objects communicates with one another by sending and receiving message</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Access Modifiers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Access modifiers are used for defining accessibility of classes, methods and fields. <br> <br>
+            <table class="one" style="width: 90%;">
+              <tr>
+                <td>Default - declarations are visible only within the package</td>
+              </tr>
+              <tr>
+                <td>Private - declarations are visible within the class only</td>
+              </tr>
+              <tr>
+                <td>Protected - declarations are visible within the package or all subclasses</td>
+              </tr>
+              <tr>
+                <td>Public - declarations are visible everywhere</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="dual">
+      <thead>
+        <tr>
+          <th colspan="2">Class Modifiers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="width: 20%;">public</td>
+          <td>This class is accessible by any other class</td>
+        </tr>
+        <tr>
+          <td>default</td>
+          <td>The class is only accessible by classes in the same package.</td>
+        </tr>
+        <tr>
+          <td>final</td>
+          <td>The class cannot be inherited by other classes</td>
+        </tr>
+        <tr>
+          <td>abstract</td>
+          <td>The class cannot be used to create objects. <br>To access an abstract class, it must be inherited from another class.</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="dual">
+      <thead>
+        <tr>
+          <th colspan="2">Method Modifiers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>default</td>
+          <td>Method is only accessible in the same package</td>
+        </tr>
+        <tr>
+          <td style="width: 18%;">private</td>
+          <td>Method is only accessible within the declared class</td>
+        </tr>
+        <tr>
+          <td>protected</td>
+          <td>Method is accessible in the same package and subclasses</td>
+        </tr>
+        <tr>
+          <td>public</td>
+          <td>Method is accessible from all classes</td>
+        </tr>
+        <tr>
+          <td>final</td>
+          <td>Method cannot be overridden or modified</td>
+        </tr>
+        <tr>
+          <td>static</td>
+          <td>Method belongs to the class rather than an object</td>
+        </tr>
+        <tr>
+          <td>synchronized</td>
+          <td>Method can only be accessed by one thread at a time</td>
+        </tr>
+        <tr>
+          <td>abstract</td>
+          <td>Method does not have a body which is provided by the subclass
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="dual">
+      <thead>
+        <tr>
+          <th colspan="2">Field Modifiers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>default</td>
+          <td>Field is only accessible in the same package</td>
+        </tr>
+        <tr>
+          <td style="width: 18%;">private</td>
+          <td>Field is only accessible within the declared class</td>
+        </tr>
+        <tr>
+          <td>protected</td>
+          <td>Field is accessible in the same package and subclasses</td>
+        </tr>
+        <tr>
+          <td>public</td>
+          <td>Field is accessible for all classes</td>
+        </tr>
+        <tr>
+          <td>final</td>
+          <td>Field cannot be modified</td>
+        </tr>
+        <tr>
+          <td>static</td>
+          <td>Field belongs to the class rather than an object</td>
+        </tr>
+        <tr>
+          <td>transient</td>
+          <td>Fields are skipped when serializing the object containing them</td>
+        </tr>
+        <tr>
+          <td>volatile</td>
+          <td>Field value is not cached thread-locally and is always read from the memory</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Constructor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <li>Constructor is a kind of method that is used to initialize newly created objects</li>
+              <li>Constructor has the same name as the class name in which it is declared</li>
+              <li>Constructor is automatically called upon creation of a new object</li>
+              <li>Constructor cannot be abstract, static, final and synchronized</li>
+              <li>Constructor can be overloaded</li>
+              <li>Constructor can not have return type</li>
+              <li>Constructor can be parameterized or can have zero parameter</li>
+              <li>Constructor with zero parameter is known as default constructor</li>
+              <li>Constructor overloading is the special kind of method overloading</li>
+              <li>Parent class constructor is called before the subclass constructor is called</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Constructor Chaining</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul style="padding: 0px 20px; font-size: 16px;">
+              <li>Process of calling a constructor from another constructor</li>
+              <li>Expose multiple ways of constructing an object using constructors chaining</li>
+              <li>Constructor chaining makes our code more readable and avoid duplicate code</li>
+            </ul> <br>
+            Constructor chaining can be done in two ways:
+            <ul>
+              <li>By using <i>this</i> keyword for chaining constructors in the same class</li>
+              <li>By using <i>super</i> keyword for chaining constructors from the parent class</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>This Keyword</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <li>This keyword is an implicit reference parameter of each instance method</li>
+              <li>This keyword refers to the current object in a method or constructor</li>
+              <li>This keyword contains address of the object that called the method</li>
+              <li>This keyword is an implicit parameter of each instance method</li>
+              <li>This keyword can be used to call current class constructor</li>
+              <li>This keyword can be used to call current class method</li>
+              <li>This keyword refers to the object that invoked the method</li>
+              <li>This keyword can be used to return the current class object</li>
+              <li>This keyword can be used to pass an argument in the method call</li>
+              <li>This keyword can be used to pass an argument in the constructor call</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Super Keyword</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <li>The super keyword is a reference variable which refers to parent class object</li>
+              <li>The super keyword can be used to refer to parent class instance variable</li>
+              <li>The super keyword can be used to refer to parent class constructor</li>
+              <li>The super keyword can be used to refer to parent class method</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Generics</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Generics enables generic programming in java. We can use generic to write classes and methods
+            that can operate on any data type. <br> <br>
+            Advantages of generic programming are following:
+            <ul>
+              <li>Provides compile-time type safety</li>
+              <li>Avoids class cast exceptions</li>
+              <li>Eliminate the need for most type conversions</li>
+              <li>Supports generic class, interface, method and field</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Method Overloading</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            The process of writing multiple methods with the same name in the same class is called
+            <em>method overloading. </em>Method overloading is a kind of <em>static</em> polymorphism. <br> <br>
+            <ul style="padding-left: 25px; font-size: 16px;">
+              <li>Method overloading increases the readability of the program</li>
+              <li>Avoids the need to memorize multiple method names</li>
+              <li>Method overloading makes our code more generic</li>
+              <li>Method overloading support clean code</li>
+              <li>The complexity of the code is reduced</li>
+              <li>Binding process happens during compile time</li>
+              <li>Compiler binds the method call with an approriate method body</li>
+            </ul> <br>
+            Method overloading is achieved by either:
+            <ul>
+              <li>Changing the number of arguments</li>
+              <li>Changing the data type of the arguments</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Method Overriding</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding-right: 40px;">
+            Process of redefining a parent class instance
+            method into its child class is known  as method overriding.
+            An instance method defined in the parent class is redefined into its child class to give
+            specific implementation of the parent class method.<br> <br>
+            Referenced object type, not the reference variable type determines which method will be called.
+            When we create a parent class reference variable and assign a child class object then
+            calling an overridden method on that variable will call the child class behaviour.
+            <br> <br>
+            <ul style="padding-left: 25px; font-size: 16px;">
+              <li>Final methods can not be overridden</li>
+              <li>Static methods can not be overridden</li>
+              <li>Private methods can not be overridden</li>
+              <li>Child class method is called overriding method</li>
+              <li>Parent class method is called overridden method</li>
+              <li>Overridden methods are dynamically dispatched</li>
+              <li>Finalize method can be overridden to free system resources</li>
+              <li>Overridden parent class method can be called using super keyword</li>
+              <li>Runtime polymorphism can be achieved through method overriding</li>
+              <li>Abstract methods can only be overridden by the first concrete class</li>
+              <li>The access level cannot be more restrictive than the overridden method</li>
+              <li>Override annotation denotes that the method overrides the base class method</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Dynamic Dispatch</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <em>Dynamic binding</em> is a process in which a call to overridden method is resolved at the
+            runtime rather than compile time. Which means that the code to be executed for a specific
+            method call is not known until runtime. <br> <br>
+            <em>Dynamic dispatch</em> is used when multiple classes contain different implementations
+            of the same method which provides a mechanism for selecting the function to be executed from various
+            function alternatives at the runtime.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Abstract Method</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <li>Abstract method is a method that is declared without implementation</li>
+              <li>Abstract method must always be redefined in the subclass</li>
+              <li>Abstract method only have signature</li>
+              <li>Abstract method can not be final</li>
+              <li>Class which contains abstract method must be declared abstract</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Abstract Class</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <li>Abstract class is one of two ways to achieve abstraction in java</li>
+              <li>Abstract class declared with abstract keyword</li>
+              <li>Abstract class cannot be instanciated</li>
+              <li>Abstract class cannot be final</li>
+              <li>Abstract class always have a default constructor</li>
+              <li>Abstract class can have parameterized constructors</li>
+              <li>Abstract class is created to be extended or inherited</li>
+              <li>Abstract class can have abstract and non-abstract methods</li>
+              <li>A class that extends an abstract class must implement all its abstract method</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Interface</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul style="font-size: 16px; padding: 0px 25px;">
+              <li>Interface is one of two ways to achieve abstraction in java</li>
+              <li>Interface is completely abstract class</li>
+              <li>Interface methods are by default <em>abstract</em> and <em>public</em></li>
+              <li>Interface variables are by default <em>public</em>, <em>static</em> and <em>final</em></li>
+              <li>Interface specifies only <i>what</i> needs to be done</li>
+              <li>Childrens will decide <i>how</i> to do in their own way</li>
+              <li>Like abstract class interface cannot be instanciated</li>
+              <li>Interface allows us to group several related classes as siblings</li>
+            </ul> <br>
+            <table class="one" style="width: 85%;">
+              <tr>
+                <th>Why Interface</th>
+              </tr>
+              <tr>
+                <td>
+                  <i>Abstraction - Complete abstraction can be achieved through interface</i>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <i>Security </i>- Hides implementation details and only show the important
+                  details of an object
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <i>Multiple inheritance -</i> Multiple inheritance can be achieved through
+                  interface because a class can implements multiple interfaces
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Final Keyword</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <li>Final method cannot be overridden in any descendant class</li>
+              <li>Final class cannot be extended or subclassed</li>
+              <li>Final variable can not be modified</li>
+              <li>Final variable must be initialized</li>
+              <li>Final method is always statically bound</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Immutable Class</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <li>Make all fields <i>final</i> and <i>private</i></li>
+              <li>Do not provide <i>setter</i> mathods</li>
+              <li>Declare class as <i>final</i> to prevent subclasses to override methods</li>
+              <li>When the instance fields include references to mutable objects:
+                <ul>
+                  <li>Do not provide methods that modify the mutable objects</li>
+                  <li>Do not share references to the mutable objects</li>
+                  <li>Never store references to external mutable objects passed to the constructor
+                    instread create copies if necessary and store references to the copies
+                  </li>
+                  <li>
+                    Create copies of internal mutable objects when necessary to avoid returning
+                    the originals in your methods
+                  </li>
+                </ul>
+              </li> <br>
+              <li>Advantages of immutable objects:
+                <ul>
+                  <li>Objects state (fields) can not be changed</li>
+                  <li>The object's <i>hashCode</i> can easily be cached</li>
+                  <li>These objects are a good choice for <i>keys</i> of <i>Map</i></li>
+                  <li>Good for multithreaded application as state of object cannot be changed</li>
+                </ul>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Type Casting</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 90%;">
+              <tr>
+                <td>
+                  Manual or automatic conversion of one data type into another data type <br> is called type casting
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  The compiler perform automatic conversion and programmer performs manual conversion
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Upcasting (widening) a variable is done automatically
+                </td>
+              </tr>
+              <tr>
+                <td>Downcasting (narrowing) a variable must be done manually</td>
+              </tr>
+              <tr>
+                <td>
+                  Widening takes place when a smaller primitive type value is automatically
+                  accommodated in a larger or wider primitive data type
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Widening also takes place when a reference variable of a subclass is automatically
+                  accommodated in a reference variable of its superclass
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Narrowing a wider primitive type value to a smaller primitive type value
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Narrowing a superclass reference to a subclass reference
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Exception</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 15px 23px;">
+            Exception is an unexpected event which occurred during the execution of a program and
+            disrupts the normal flow of instructions. 
+            Exception object contains information about an error that happens at run time.
+            Creating an exception object and handing it to the runtime system is called 
+            <em>throwing an exception</em>. <br> <br>
+            <table class="one" style="width: 90%;">
+              <tr>
+                <th>Exception can be divided into two board categories</th>
+              </tr>
+              <tr>
+                <td>Faults introduced by the programmer, such as division by zero or calling a method
+                  with null reference</td>
+              </tr>
+              <tr>
+                <td>
+                  Things out of the programmer's control, such as a user entering a garbage on the keyboard
+                  when the program expects a positive integer
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Checked Exception</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <li>Checked exceptions are those checked by the java compiler at compile time</li>
+              <li>Checked exceptions are forced to be caught or declared by the compiler</li>
+              <li>Checked exceptions are also called compile time exceptions</li>
+              <li>Checked exceptions can be handled</li>
+              <li>Checked exceptions can be propagated through throws</li>
+              <li>Code will not compile if checked exceptions are not handled</li>
+              <li>Represent a potential problem that the user knows can happen</li>
+              <li>Force the user to establish an error handling policy at compile time</li>
+            </ul>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Unchecked Exception</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <li>Unchecked exceptions are not checked by the compiler at compile time</li>
+              <li>Unchecked exceptions are also called <i>RuntimeExceptions</i> or <i>Error</i></li>
+              <li>Unchecked exceptions does not need to be caught or declared</li>
+              <li>Unchecked exceptions are caught by the JVM</li>
+              <li>Unchecked exceptions can not be handled</li>
+              <li>Runtime exception indicates an issue with the code that can be prevented</li>
+              <li>They no not force the user to establish an error handling policy on compile</li>
+              <li>Represent an unexpected defect in the application that happens at runtime</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Custom Exception</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 97%;">
+              <tr>
+                <td>
+                  Creating our own exception is known as custom or user-defined exception
+                  which is done by extending <i>Exception</i> class
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Custom exceptions are used to customize the exception according to user need
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Custom exceptions provide you the flexibility to add attributes and methods
+                  that are not part of a standard java exception
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Try-catch and Finally</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Try, catch and finally blocks helps in writing the application code which may
+            throw exceptions at runtime and gives us a chance to either recover from exception
+            by executing alternate application logic or handle the exception to
+            report back to <br> the user. It helps in preventing the ugly application crashes. <br> <br>
+            <ul style="font-size: 16px; padding-left: 25px;">
+              <li>Code to be monitored for exceptions is written inside <em>try</em> block</li>
+              <li>Catch block contains exception handling code</li>
+              <li>We can use multiple catch with a single try</li>
+              <li>Catch block must be written next to the try block</li>
+              <li>Finally statement defines a code block to run regardless of the result</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Functional Interface</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <li>Functional interface is an interface that has exactly <em>one abstract method</em></li>
+              <li>Functional interface can have only one functionality to exhibit</li>
+              <li>Functional interface is annotated with <code>@FunctionalInterface</code></li>
+              <li>Functional interface can be implemented with lambdas</li>
+              <li><em>Predicate</em> - takes an object and returns a boolean</li>
+              <li><em>Consumer</em> - takes an object and returns nothing</li>
+              <li><em>Supplier</em> - takes nothing and returns an object</li>
+              <li><em>Function&lt;T, R&gt;</em> - takes an object of type <i>T</i> and return object of type <i>R</i></li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Lambda Expression</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            A lambda expression is a short block of code which takes in parameters and
+            returns a value. Lambda expressions are similar to methods but without name
+            and they can be defined inside the body of a method. <br> <br>
+            Lambda expression can be stored in variables if type of the variable
+            is an interface which has only one method.
+            The lambda expression should have the same number of parameters and the same
+            return type as that method. <br> <br>
+            <ul style="font-size: 16px; padding-left: 25px;">
+              <li>Lambda is a kind of disposable functions</li>
+              <li>Lambda enables functional programming</li>
+              <li>Lambda expression help us to avoid boilerplate code</li>
+            </ul> <br>
+            <pre>
+
+            Supplier<Double> randomValue = () -> Math.random();
+            System.out.println(randomValue.get()); <br>  
+            Predicate&lt;Integer> lessThan = a -> (a < 100);
+            System.out.println(lessThan.test(101)); <br>
+            Consumer&lt;String> consumer = a -> System.out.println(a);
+            list.stream().forEach(consumer);
+            </pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Package</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 96%;">
+              <tr>
+                <td>
+                  A package is a container of a collection of related classes, interfaces, enumerations
+                  and sub-packages
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Packages are used to prevent name conflicts and to write better
+                  maintainable code by organizing them into multiple packages
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Packages are of two types built-in packages and user defined packages
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Packages that are inside another package are called sub-packages
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Serialization</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Serialization is the process of converting an object into stream of bytes. Once we have a stream of bytes
+            we can store that into database, memory or into a file. <br> <br>
+            Serialization is done to persist data or state
+            of an object beyond the life cycle of an application. Second reason to serialize an object is to
+            transmit data or state of an object over a network. <br> <br>
+            All subtypes of a serializable class are also serializable.
+            Serializable interface has no methods or fields and serves only to identify the semantic of
+            being serializable.<br> <br>
+            Serializability of a class is enabled by the class implementing the <em>io.Serializable</em> interface.
+            Classes that do not implement this interface will not have any of their state <em>serialized</em>
+            or <em>deserialized</em>. <br> <br>
+            <pre>
+
+          User user = new User("Aryan", "aryan@gmail.com", 10)
+          FileOutputStream fos = new FileOutputStream("usr.d")
+          ObjectOutputStream oos = new ObjectOutputStream(fos)
+          oos.writeObject(user)
+          oos.close()
+          fos.close()
+            </pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Deserialization</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Deserialization is the process of reconstructing an object that has been serialized before.
+            Deserialization is the reverse process of serialization where byte stream <br> is used to
+            create actual java object into memory. <br> <br>
+            <pre>
+
+          FileInputStream fis = new FileInputStream("usr.d")
+          ObjectInputStream ois = new ObjectInputStream(fis)
+          User user = (User) ois.readObject()
+          ois.close()
+          fis.close()
+            </pre>            
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Transient Keyword</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 100%;">
+              <tr>
+                <td>
+                  Transient keyword is used to avoid serialization of particular field
+                  of an serializable object. Fields marked with transient will not be serialized
+                  during serialization.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Deserialization process would use the default values for 
+                  such fields when creating an object out of the serialized form bacause
+                  transient fields are not present in the serialized
+                  form of an object.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Marker Interface</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 92%;">
+              <tr>
+                <td>Marker interface or tagging interface is an interface with empty body
+                  which provides additional runtime information about the objects to the JVM.
+                </td>
+              </tr>
+              <tr>
+                <td>Java has some built-in marker interface such as <em>Serializable</em>
+                  and <em>Cloneable</em>.</td>
+              </tr>
+              <tr>
+                <td>
+                  <em>Cloneable</em> marker interface is an indicator to the JVM that a programmer can
+                  call the <i>clone</i> method.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Trying to clone an object that does not implement this marker interface the java compiler 
+                  will report an error. By convention, classes that implement this interface should
+                  override <i>clone</i> method.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Annotaion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Annotaions are a special type of comments in our code which can:
+            <ul>
+              <li>Embed instructions for source code processing tools</li>
+              <li>Embed instructions for the java compiler</li>
+              <li>Embed meta data which can be read at runtime by our app or frameworks</li>
+            </ul> <br>
+            We can create our own custom annotations:
+            <ul>
+              <li>As passive documentation in our code - will not have any functionality</li>
+              <li>As input for a java source code processor</li>
+              <li>As input for a java library that accesses annotations at runtime via reflection</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Collection</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 87%;">
+              <tr>
+                <td>
+                  A collection is an object that groups multiple elements into a single unit
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Collections are used to store, retrieve, manipulate and communicate aggregate data
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Collection framework is a combination of classes and interfaces which is used to store add
+                  manipulate the data in the form of objects
+                </td>
+              </tr>
+              <tr>
+                <td><em>Ordered</em> collection maintain the order in which elements are inserted</td>
+              </tr>
+              <tr>
+                <td><em>Unordered</em> collection are those that does not maintain insertion order</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Comparable</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Comparable is an interface defining a strategy of comparing an object with another objects
+            of the same type. The Comparable interface is used for defining the default ordering.
+            Lists (and arrays) of objects that implement this interface can be sorted automatically
+            by <strong>Collections.sort</strong> (and <strong>Arrays.sort</strong>).
+            The sorting order is decided <br>
+            by the return value of the <strong>compareTo</strong> method.
+            Comparable is used to define the default comparator of the class.
+            <br> <br>
+            <pre>
+
+                public interface Comparable<T> {
+                    public int compareTo(T other);  
+                } <br>
+      Compares this object with the specified object for order.
+      Returns a negative integer, zero, or a positive integer as this object
+      is less than, equal to or greater than the specified object.
+            </pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Comparator</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Comparator is an functional interface which defines a strategy for comparing two objects
+            of the same type. Comparator is a functional interface and therefore can <br> be used as
+            the assignment target for a lambda expression or method reference.
+            <br> <br>Why use a Comparator if we already have Comparable?
+            <ul>
+              <li>Using Comparators allows us to avoid adding additional code to our domain classes</li>
+              <li>When we cannot modify the source code of the class whose objects we want to sort</li>
+              <li>We can define multiple different comparison strategies</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Iterable</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            The Iterable interface represents a collection of objects which is iterable - meaning which
+            can be iterated.
+            Implementing this interface allows an object to be the target of the <em>foreach</em>
+            loop statement. <br> <br>
+            There are three ways in which objects of <em>Iterable</em> can be iterated:
+            <ul>
+              <li>Using enhanced for loop</li>
+              <li>Using <em>Iterable</em> forEach loop</li>
+              <li>Using <em>Iterator&lt;T&gt;</em> interface</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Iterator</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding-right: 35px;">
+            An iterator is an object that can be used to traverse through collections which can
+            also be used to change the collections that they traverse.
+            Iterator is considered the universal cursor for the collection API.
+            An iterator need to implements the <em>Iterator</em> interface. <br> <br>
+            The main difference between fail fast and fail safe iterator: fail safe does
+            not throw any concurrent modification exception in modifying the object
+            during the iteration process.
+            <br> <br>
+            The methods used while traversing the collections:
+            <ul>
+              <li><em>next: </em>returns the next element in a collection</li>
+              <li><em>hasNext: </em>returns <i>false</i> if we hava reached the end of 
+                collection otherwise <i>true</i></li>
+              <li><em>remove: </em>removes the last element returned by the iterator from the collection</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

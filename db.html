@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DB</title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: whitesmoke;
+        margin-top: 20px;
+        width: 54%;
+        padding-left: 3%;
+        padding-right: 3%;
+        min-height: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+        padding-top: 40px;
+        background-color: white;
+        box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        padding-bottom: 100px;
+      }
+      table.mono {
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        width: 100%;
+        font-size: 16px;
+        word-spacing: -1px;
+        font-family: "DejaVu Serif";
+        background: rgba(0,0,0,0.01);
+        color: #28282B;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 4px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+      table.mono thead tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.mono thead tr th {
+        background-color: #009879;
+        padding: 8px 20px;
+        color: #ffffff;
+        text-align: left;
+        font-weight: normal;
+      }
+      table.mono tbody tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.mono tbody tr td {
+        padding: 15px 25px;
+      }
+      table.mono tbody tr td ul {
+        padding-left: 40px;
+        padding-top: 2px;
+        padding-bottom: 5px;
+        list-style: square;
+        font-size: 15px;
+      }
+      table.mono tbody tr td ul code {
+        font-size: 14px;
+      }
+      table.dual {
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        width: 100%;
+        color: #28282B;
+        background: rgba(0,0,0,0.01);
+        font-size: 16px;
+        word-spacing: -1px;
+        font-family: "DejaVu Serif";
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 4px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+      table.dual thead tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.dual thead tr th {
+        background-color: #009879;
+        padding: 8px 20px;
+        color: #ffffff;
+        text-align: center;
+        font-weight: normal;
+      }
+      table.dual tbody tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.dual tbody tr td {
+        padding: 5px 5px;
+        border: 2px solid #009879;
+        border-top: none;
+        font-size: 15px;
+        text-align: center;
+      }
+      table.dual tbody tr td:first-child {
+        color:firebrick;
+      }
+      table.dual tbody tr td:nth-child(3) {
+        color:firebrick;
+      }
+      table.list {
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        width: 100%;
+        font-size: 16px;
+        word-spacing: -1px;
+        font-family: "DejaVu Serif";
+        background: rgba(0,0,0,0.01);
+        color: #28282B;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 4px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+      table.list thead tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.list thead tr th {
+        background-color: #009879;
+        padding: 8px 20px;
+        color: #ffffff;
+        text-align: left;
+        font-weight: normal;
+      }
+      table.list tbody tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.list tbody tr td {
+        padding: 15px 50px;
+        line-height: 1.3;
+      }
+      table.list tbody tr td ul {
+        list-style: square;
+      }
+      table.list tbody tr td ul li ul {
+        padding-left: 40px;
+        font-size: 15px;
+      }
+      em {
+        color: brown;
+        font-weight: 500;
+        font-style: normal;
+      }
+      .just {
+        text-align: justify;
+        text-justify: inter-word;
+      }
+      pre {
+        background: #f8f8f8;
+        border: 3px solid #eeeeee;
+        font-size: 14px;
+        line-height: normal;
+        padding-top: 0px;
+        overflow: auto;
+        max-width: 99.2%;
+        font-family: "Source Code Pro";
+        width: 100%;
+        word-spacing: -2px;
+      }
+      code {
+        font-size: 16px;
+        font-family: "Consolas";
+        color: darkblue;
+      }
+      table.mono tbody tr td table {
+        border-collapse: collapse;
+        border: 2px solid #009879;
+        color: #28282B;
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 15px;
+      }
+      table.mono tbody tr td table tr th {
+        background: #009879;
+        color: white;
+        font-weight: normal;
+        padding: 4px 5px;
+        font-size: 16px;
+        border-bottom: 2px solid #009879;
+        border-left: 4px solid #009879;
+        border-right: 4px solid #009879;
+      }
+      table.mono tbody tr td table tr td {
+        padding: 10px 20px;
+        margin: none;
+        border-bottom: 2px solid #009879;
+        border-left: 4px solid #009879;
+        border-right: 4px solid #009879;
+      }
+      table.mono tbody tr td table.one {
+        border-collapse: collapse;
+        border: 2px solid #009879;
+        color: #28282B;
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 15px; 
+      }
+      table.mono tbody tr td table.one tr {
+        overflow: hidden;
+        border-radius: 4px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+      table.mono tbody tr td table.one tr th {
+        background: #009879;
+        color: white;
+        font-weight: normal;
+        padding: 4px 5px;
+        font-size: 16px;
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.mono tbody tr td table.one tr td {
+        padding: 10px 20px;
+        margin: none;
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.mono tbody tr td table tr td code {
+        font-size: smaller;
+      }
+      strong {
+        font-style: normal;
+        font-weight: normal;
+        color:purple;
+      }
+    </style>
+  </head>
+  <body>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Java Database Connectivity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Java database connectivity is an API that allows java programs to access database management system.
+            API consist of a set of interfaces and classes written in java programming language.
+            A jdbc driver implements these interfaces and classes <br> for a particular database
+            management system. <br> <br>
+            Since JDBC is a standard specification, one java program that uses the JDBC API <br> can connect
+            to any database management system as long as a driver exists for <br> that particular 
+            database management system. <br> <br>
+            A java program that uses the JDBC API loads the specified driver for a particular DBMS before
+            it actually connects to a database. The JDBC <em>DriverManager</em> class <br> then sends all
+            JDBC API calls to the loaded driver. <br> <br>
+            JDBC API (classes and interfaces) used for each of the tasks mentioned below:
+            <ul>
+              <li>Making a connection to a database</li>
+              <li>Creating SQL statements</li>
+              <li>Executing SQL statements</li>
+              <li>Reading and processing the result set</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="dual">
+      <thead>
+        <tr>
+          <th colspan="2">JDBC Components</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>API</td>
+          <td style="text-align: left; padding: 10px 10px;">JDBC API provides various classes and interfaces
+            that helps us to connect and access the database. <br> <br>
+            The JDBC API uses a driver manager and database-specific drivers to provide transparent
+            connectivity to heterogeneous databases.
+          </td>
+        </tr>
+        <tr>
+          <td>DriverManager</td>
+          <td style="text-align: left; padding: 10px 10px;">
+            The JDBC driver manager loads database specific drivers in an application. <br>
+            This driver manager establishes a connection with a database and also makes a database-specific
+            call to the database so that it can process <br> the user request. <br> <br>
+            The JDBC driver manager ensures that the correct driver is used to access each data source.
+            The driver manager is capable of supporting multiple concurrent drivers connected to
+            multiple heterogeneous databases.
+          </td>
+        </tr>
+        <tr>
+          <td>Test Suite</td>
+          <td style="text-align: left; padding: 10px 10px;">
+            Test suite of JDBC help us to test the operation such as insertion, deletion, updation 
+            that the JDBC Drivers perform.
+          </td>
+        </tr>
+        <tr>
+          <td>JDBC-ODBD <br> Bridge Drivers</td>
+          <td style="text-align: left; padding: 10px 10px;">
+            Connects database drivers to the database. This bridge translates the JDBC method call to the ODBC function call. It makes use of the sun.jdbc.odbc package which includes a native library to access ODBC characteristics.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list" style="width: 49%; float: left">
+      <thead>
+        <tr>
+          <th>Pros of JDBC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding-right: 0px;">
+            <ul>
+              <li>Good performance with large data</li>
+              <li>Clean and simple SQL processing</li>
+              <li>Very good for small application</li>
+              <li>Simple syntax so easy to learn</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list" style="width: 49%; float: right">
+      <thead>
+        <tr>
+          <th>Cons of JDBC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding-right: 0px;">
+            <ul>
+              <li>Complex if it is used in large apps</li>
+              <li>Hard to implement MVC concept</li>
+              <li>Large programming overhead</li>
+              <li>Query is DBMS specific</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Code for JDBC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Attempts to establish a connection to the given database URL <br> <br>
+            <pre>
+
+    Class.forName("com.mysql.jdbc.Driver")
+    String url = "jdbc:mysql://localhost:3306/userdb"
+    Connection connection = DriverManager.getConnection(url, user, password)
+            </pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Database Schema</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding-right: 20px;">
+            <ul>
+              <li><em>Schema</em> is the skeleton structure that represents the logical view of a database</li>
+              <li>Defines how the data is organized and relations among them are associated</li>
+              <li>A database schema defines its entities and the relationship among them</li>
+              <li>Formulates all the constraints that are to be applied on the data</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Database Operations</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <li>Loading the database specific driver such as mysql-connector</li>
+              <li>Creating a Connection to the database</li>
+              <li>Creating a Statement</li>
+              <li>Executing the Statement</li>
+              <li>Closing the Connection</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Object Relational Mapping</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 15px 22px">
+            Object-relational mapping (ORM) is the process of mapping java objects to
+            relational tables of a relational database. Each row in the table correspond
+            to the single object and each column in the table correspond to the each
+            field of the object. <br> <br>
+            ORM is an layer between object-oriented language and SQL language of relational database.
+            ORM layer work like a adapter layer as it adapts the language of object graphs to the language
+            of relational tables.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Java Persistance API</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Java Persistence API is the java standard API for object-relational mapping.
+            JPA is one of the many possible
+            approach to ORM. The API is a set of concepts that defines which objects within the application
+            should be persisted and how it should persist them. JPA is only an specification and that it needs
+            an implementation to work. Most popular implementation of JPA is <em>Hibernate</em>. <br> <br>
+            
+            Java persistence API is concerned with persistence, which means any mechanism by which
+            java objects outlive the application process that created them.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Entity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 95%;">
+              <tr>
+                <td>
+                  A persistance entity is a lightweight java class with its state typically persisted
+                  to a <em>table</em> in a relational database
+                </td>
+              </tr>
+              <tr>
+                <td>Instances of such an entity correspond to individual rows in the table</td>
+              </tr>
+              <tr>
+                <td>
+                  Entities typically have relationships with other entities and these relationships
+                  are expressed through object-relational metadata
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Metadata is either specified directly into the entity class
+                  file using annotations or in a separate XML descriptor file distributed with the application
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Hibernate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 99%;">
+              <tr>
+                <td>
+                  Hibernate is an ORM tool for managing persistant data and is an implementation and
+                  extension of the JPA.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  ORM tool used to map object-oriented models to relational database tables
+                </td>
+              </tr>
+              <tr>
+                <td>                  
+                  Hibernate is a layer built on the top of the jdbc to solve the impedence missmatch
+                  problem and automates conversion of object-to-table and table-to-object
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Data is structured into object graphs in the object oriented program and relational
+                  tables in the relational database
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Features of Hibernate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 97%;">
+              <tr>
+                <td>
+                  <i>Mapping -</i> Maps the Java classes to relational database tables and Java data types to
+                  SQL data type
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <i>Automatic table generation</i> - Hibernate provides the facility
+                  to create the tables of the database automatically to 
+                  avoid manual creation of the database tables
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <i>Autogenerates SQL code -</i> Allowing us to focus on generating business logic.
+                  Code generated by the hibernate is well tested
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <i>Simplifies complex join -</i> Fetching data from multiple tables is easy in hibernate
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <i>Fast performance</i> - Performance of hibernate is fast because cache
+                  (first leval and second level) is internally used in hibernate
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <i>DBMS independent query</i> - Hibernate
+                  generates database independent queries so no need to write database specific queries.
+                  Before hibernate, if database is changed for the project,
+                  we need to change the SQL query as well that leads <br> to the maintenance problem
+                </td>
+              </tr>
+              <tr>
+                <td><i>Security -</i> Integrates SQL injection protection</td>
+              </tr>
+              <tr>
+                <td>
+                  <i>Increases productivity -</i> Auto generates the data access code
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <i>Reduces testing -</i> We need to test only the business logic code
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <i>Connection pooling</i> to share open connection to database
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <i>Relieves </i> the developer from the manual object conversion of the result set
+                </td>
+              </tr>
+              <tr>
+                <td>Development cost and maintenance costs are reduced</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Connection Pooling</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Connection pooling means that connections are reused rather than created
+            each time a connection is requested. A connection pool is cache of database
+            connections maintained so that connections can be reused when future requests
+            to the database is required. <br> <br>
+            Sequence of steps involved in a typical database connection life cycle:
+            <ul>
+              <li>Opening a connection to the database using the database driver</li>
+              <li>Opening a TCP socket for reading-writing data</li>
+              <li>The user is authenticated</li>
+              <li>Reading-writing data over the socket</li>
+              <li>Close the connection</li>
+              <li>Close the socket</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Hibernate Architecture</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Hibernate has a layered architecture, each layer encapsulate specific functionality.
+            A layered architecture enables changes in one area with minimal impact on other areas 
+            of the application. 
+             <br> <br>
+            <table style="width: 84%;">
+              <tr>
+                <td><i>Application</i> - consists of the client code the is accessing the database</td>
+              </tr>
+              <tr>
+                <td><i>Framework</i> -  manages the hibernate configurations, sessions and transactions
+                  and allows the application layer to communicate <br> with the persistance layer </td>
+              </tr>
+              <tr>
+                <td><i>Persistance</i> - consists of the database</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="dual">
+      <thead>
+        <tr>
+          <th colspan="2">Key Components of Hibernate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Configuration</td>
+          <td>Represent database properties and mapping information</td>
+        </tr>
+        <tr>
+          <td>SessionFactory</td>
+          <td>Used to create an session for database interactions</td>
+        </tr>
+        <tr>
+          <td>Session</td>
+          <td>Used to get a physical connection with a database</td>
+        </tr>
+        <tr>
+          <td>Transaction</td>
+          <td>Sequence of operations performed as a unit</td>
+        </tr>
+        <tr>
+          <td>Query</td>
+          <td>Used to create or retrieve objects from the database using HQL or SQL</td>
+        </tr>
+        <tr>
+          <td>Criteria</td>
+          <td>Used to retrieve objects by executing the object-oriented criteria queries</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Configuration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding-right: 20px;">
+            Configuration object has the configuration properties of the hibernate which include
+            database properties and class mapping properties. <br> <br>
+            <ul style="padding-left: 25px; font-size: 16px;">
+              <li>Created once during application initialization</li>
+              <li>Configuration object is used to create the object of session factory</li>
+            </ul><br>
+            <table style="width: 87%;">
+              <tr>
+                <td>
+                  <i>Database connection -</i> is handled through one or more configuration files
+                  supported by Hibernate. These files are <code>hibernate.properties</code> and
+                  <code>hibernate.cfg.xml</code>.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <i>Class mapping</i> component creates the connection between
+                  the Java classes and database tables (<code>hibernate.hbm.xml</code>)
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Session Factory</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 92%;">
+              <tr>
+                <td>Session factory is an object responsible for the creation of Session objects</td>
+              </tr>
+              <tr>
+                <td>Session factory object is a heavyweight and immutable which is created
+                  once during application startup</td>
+              </tr>
+              <tr>
+                <td>
+                  Since session factory object is immutable it is thread-safe and used by
+                  all the threads of an application
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  One object per database if application is referring to multiple database
+                </td>
+              </tr>
+              <tr>
+                <td>Database connection container which allow us to reuse existing connection</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Session</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div style="width: 99%; text-align: justify;">
+            Session is used to get a physical connection between the application and database.
+            A Session object is instantiated each time interaction with the database is needed.
+            The persistent objects are saved, updated, deleted and retrieved through a session object.
+            The Session interface provides methods to create, read, update and delete persistant objects. <br> <br>
+            </div>
+            When operating on the objects during the session they get attached to that session.
+            The changes made are detected and saved upon closing then
+            hibernate breaks the connections between the objects and the session. <br> <br>
+            <table style="width: 99%;">
+              <tr>
+                <td style="padding: 10px 20px;">
+                  The hibernate session acts as a buffer between the application and the database
+                  which caches objects retrieved from the database so it can provide those objects <br>
+                  if they are needed again without hitting the database
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  When the application saves changes, hibernate does not send inserts and updates
+                  to the database right away, the changes are saved in the session, to be sent
+                  to the database the next time the session is flushed
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Flush modes can be configured or app code can flush the session to avoid
+                  caching
+                </td>
+              </tr>
+            </table> <br>
+            When <em>openSession()</em> method is called hibernate:
+            <ul>
+              <li>Takes a Connection from the connection pool</li>
+              <li>Creates a Session around that Connection</li>
+              <li>Returns that Connection</li>
+            </ul> <br>
+            Instances may exist in one of the following three states:
+            <ul>
+              <li>Transient - never persistent, not associated with any Session</li>
+              <li>Persistent - associated with a unique Session</li>
+              <li>Detached - previously persistent, not associated with any Session</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Transient State</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding-right: 33px;">
+          An object we have not attached to any session is in the transient 
+          state. Since it was never persisted, it does not have any representation in the database.
+          Because no session is aware of it, it would not be saved automatically. <br> <br>
+          Transient instances may be made persistent by calling
+          <em>save</em>, <em>persist</em>, <em>saveOrUpdate</em> or <em>merge</em> method.
+          <br> <br>
+          <pre>
+
+            Session session = sessionFactory.openSession();
+            User user = new User("Aryan");
+            assertThat(session.contains(user)).isFalse();
+          </pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Persistance State</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            An object that we have associated with a session is in the persistent
+            state. We either saved it or read it from a persistence context, so it represents 
+            some row in the data. <br> <br>
+            Persistent instances may be made transient by calling <em>delete</em>.
+            Any instance returned by a <em>get</em> or <em>load</em> method is persistent.
+            <br> <br>
+            <pre>
+
+              Session session = sessionFactory.openSession();
+              User user = new User("Aryan");
+              session.persist(user);
+              assertThat(session.contains(user)).isTrue();
+            </pre>            
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Detached State</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            When we close the session, all objects inside it become detached. Although they still
+            represent rows in the database but they are no longer managed by any session. <br> <br>
+            Detached instances may be made persistent by calling
+            <em>update</em>, <em>saveOrUpdate</em>, <em>lock</em>, <em>replicate</em> or <em>merge</em>.
+            <br> <br>
+            <pre>
+              
+              session.persist(user);
+              session.close();
+              assertThat(session.isOpen()).isFalse();
+              assertThatThrownBy(() -> session.contains(user));
+            </pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Transaction</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding-right: 34px;">
+            A transaction is a sequence of operations performed as an atomic unit.
+            Transaction allows the application to define units of work.
+            A transaction only completes if each operations completed successfully.
+            A transaction fails if any of the operations fails.
+            A transaction is associated with a Session which is instantiated by a call to method
+            <em>beginTransaction</em>. A session
+            might span multiple transactions since the notion of a session is a conversation between 
+            the application and the database. <br> <br>
+            <pre>
+    
+    Transaction interface defines the unit of work        
+    
+    void begin() - starts a new transaction
+    void commit() - ends a the unit
+    void rollback() - forces the transaction to rollback
+    void setTimeout(int secs) - sets a transaction timeout
+    boolean isAlive()- checks if the transaction is still alive
+    boolean wasCommited() - checks if the transaction commit is successed
+    boolean wasRolledBack() - checks if the transaction rollback is successed
+            </pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="dual">
+      <thead>
+        <tr>
+          <th colspan="2">Types of Mapping</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="width: 17.4%;">One-to-one</td>
+          <td>Single instance of an entity is related to a single instance of another entity</td>
+        </tr>
+        <tr>
+          <td style="width: 17.4%;">One-to-many</td>
+          <td>Single instance of an entity is related to multiple instance of another entity</td>
+        </tr>
+        <tr>
+          <td style="width: 17.4%;">Many-to-one</td>
+          <td>Multiple instances of an entity is related to single instance of another entity</td>
+        </tr>
+        <tr>
+          <td style="width: 17.4%;">Many-to-many</td>
+          <td>Multiple instances of an entity is related to multiple instance of another entity</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Session Management by Spring</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            By default <em>Spring</em> applies transaction management at the repository level. <br> <br>
+            When <i>JpaRepository</i> method is called <i>Spring container</i> will:
+            <ul>
+              <li>Ask the <em>SessionFactory</em> to create a new <em>Session</em></li>
+              <li>Open this session</li>
+              <li>Open a transaction</li>
+              <li>Perform the called <em>Repository</em> method</li>
+              <li>Close the transaction</li>
+              <li>Close the session</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

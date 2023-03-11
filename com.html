@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comparison</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: whitesmoke;
+      margin-top: 20px;
+      width: 64%;
+      padding-left: 3%;
+      padding-right: 3%;
+      min-height: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 20px;
+      padding-top: 40px;
+      background-color: white;
+      box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      padding-bottom: 100px;
+    }
+    table {
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      width: 100%;
+      font-size: 16px;
+      font-family: "DejaVu Serif";
+      word-spacing: -2px;
+      background: rgba(0, 0, 0, 0.01);
+      color: #28282b;
+      cursor: pointer;
+      overflow: hidden;
+      border-radius: 4px;
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+    table thead tr th {
+      background-color: #009879;
+      padding: 8px 20px;
+      color: #ffffff;
+      text-align: center;
+      font-weight: normal;
+      border-bottom: 2px solid #009879;
+      border-left: 2px solid #009879;
+      border-right: 2px solid #009879;
+    }
+    table tbody tr {
+      border-bottom: 2px solid #009879;
+      border-left: 2px solid #009879;
+      border-right: 2px solid #009879;
+    }
+    table tbody tr td {
+      padding: 5px 5px;
+      border: 2px solid #009879;
+      border-top: none;
+      font-size: 15px;
+      text-align: center;
+    }
+    table tbody tr td:first-child {
+      width: 50%;
+    }
+    code {
+      font-family: "Consolas";
+      color: darkblue;
+    }
+    em {
+      color: chocolate;
+      font-weight: 500;
+      font-style: normal;
+    }
+    i {
+      color: darkblue;
+      font-style: normal;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Instance variable</th>
+        <th>Static variable</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Instance variable belongs to objects of the class</td>
+        <td>Static variable belongs to the class</td>
+      </tr>
+      <tr>
+        <td>We can have multiple copy of a instance variable</td>
+        <td>We can have only one copy of a static variable</td>
+      </tr>
+      <tr>
+        <td>Each objects has its own copy of the instance variable</td>
+        <td>Single copy of a static variable is shared by all objects</td>
+      </tr>
+      <tr>
+        <td>Can be accessed only by instance methods</td>
+        <td>Can be accessed by both static and instance methods</td>
+      </tr>
+      <tr>
+        <td>Accessed through object references</td>
+        <td>Accessed directly using the class name</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Instance method</th>
+        <th>Static method</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Instance methods belongs to objects of the class</td>
+        <td>Static methods belongs to the class</td>
+      </tr>
+      <tr>
+        <td>Instance method can be overridden</td>
+        <td>Static method cannot be overridden</td>
+      </tr>
+      <tr>
+        <td>Can be accessed only by instance methods</td>
+        <td>Can be accessed by both static and instance methods</td>
+      </tr>
+      <tr>
+        <td>Accessed through object references</td>
+        <td>Accessed directly using the class name</td>
+      </tr>
+      <tr>
+        <td>Can access both instance fields and static fields</td>
+        <td>Static methods can only access static fields</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Abstraction</th>
+        <th>Encapsulation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Abstraction is about hiding unwanted details while showing most essential information</td>
+        <td>Encapsulation means binding the code and data into a single unit</td>
+      </tr>
+      <tr>
+        <td>Abstraction solve problems at design level</td>
+        <td>Encapsulation solve problems at implementation level</td>
+      </tr>
+      <tr>
+        <td>Abstraction allows us to hide functionality</td>
+        <td>Encapsulation allows us to hide data</td>
+      </tr>
+      <tr>
+        <td>Abstraction is achieved through abstract class and interface</td>
+        <td>Encapsulation is achieved through class</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Abstract class</th>
+        <th>Interface</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Abstract class is partially abstract</td>
+        <td>Interface is completely abstract class</td>
+      </tr>
+      <tr>
+        <td>An abstract class can have any kind of variable</td>
+        <td>The interface can only have a public static final variable</td>
+      </tr>
+      <tr>
+        <td>Can have both abstract and concrete methods</td>
+        <td>Can have only abstract methods</td>
+      </tr>
+      <tr>
+        <td>Can have public and protected abstract methods</td>
+        <td>Can have only public abstract methods</td>
+      </tr>
+      <tr>
+        <td>Can not contain default method</td>
+        <td>Can contain default method</td>
+      </tr>
+      <tr>
+        <td>Does not supports multiple inheritance</td>
+        <td>Supports multiple inheritance</td>
+      </tr>
+      <tr>
+        <td>Can extend only one class or one abstract class at a time</td>
+        <td>Can extend any number of interfaces at a time</td>
+      </tr>
+      <tr>
+        <td>Keyword abstract is mandatory to declare a method as an abstract method</td>
+        <td>Keyword abstract is not mandatory to declare a method as an abstract method</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Overloading</th>
+        <th>Overriding</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Overloading increases the readability of the program</td>
+        <td>Provides specific implementation of the parent class method into its child class</td>
+      </tr>
+      <tr>
+        <td>Overloading is compile time or static polymorphism</td>
+        <td>Overriding is runtime or dynamic polymorphism</td>
+      </tr>
+      <tr>
+        <td>Method parameters must be different</td>
+        <td>Method parameters must be same</td>
+      </tr>
+      <tr>
+        <td>Overloading occurs inside a single class</td>
+        <td>Occurs in two classes that have association of is-a relationship type</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Implicit Casting</th>
+        <th>Explicit Casting</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Implicit conversion is done automatically by compiler</td>
+        <td>Explicit conversion is done manually by the programmer</td>
+      </tr>
+      <tr>
+        <td>No data loss takes place during the data conversion</td>
+        <td>Data loss may or may not take place during conversion</td>
+      </tr>
+      <tr>
+        <td>Does not requires any special syntax</td>
+        <td>Requires cast operator to perform conversion</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Checked Exception</th>
+        <th>Unchecked Exception</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Checked exceptions are checked by the compiler</td>
+        <td>Unchecked exceptions are not checked by the compiler</td>
+      </tr>
+      <tr>
+        <td>Also known as compile time exceptions</td>
+        <td>Also known as runtime exceptions</td>
+      </tr>
+      <tr>
+        <td>Caught by the programmer</td>
+        <td>Caught by the java virtual machine</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Process</th>
+        <th>Thread</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Process means program in execution</td>
+        <td>Thread is the segment of a process</td>
+      </tr>
+      <tr>
+        <td>Process is heavyweight</td>
+        <td>Thread is lightweight</td>
+      </tr>
+      <tr>
+        <td>Process takes more time for creation</td>
+        <td>Thread takes less time for creation</td>
+      </tr>
+      <tr>
+        <td>Process takes more time for context switching</td>
+        <td>Thread takes less time for context switching</td>
+      </tr>
+      <tr>
+        <td>Communication between processes is slow</td>
+        <td>Communication between threads is fast</td>
+      </tr>
+      <tr>
+        <td>A process is mostly isolated with other processes</td>
+        <td>A thread shares memory or file with other threads</td>
+      </tr>
+      <tr>
+        <td>A process does not share heap data with other processes</td>
+        <td>A thread shares heap data with other threads</td>
+      </tr>
+      <tr>
+        <td>Process has separate code, data, heap, stack and files</td>
+        <td>Share code, data, heap and files but has separate stack</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>User thread</th>
+        <th>Daemon thread</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>JVM waits for user thread to finish</td>
+        <td>JVM does not waits for daemon thread to finish</td>
+      </tr>
+      <tr>
+        <td>User thread have high priority</td>
+        <td>Daemon thread have low priority</td>
+      </tr>
+      <tr>
+        <td>Created by the user for executing some application specific task concurrently</td>
+        <td>Created by the JVM for background tasks like garbage collection job</td>
+      </tr>
+      <tr>
+        <td>User thread is terminated by user (application) or by itself</td>
+        <td>JVM will force daemon thread to terminate if all user threads have finished their execution</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="mono">
+    <thead>
+      <tr>
+        <th>Synchronized Method</th>
+        <th>Synchronized Block</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>The lock will be help throughout the method scope</td>
+        <td>The lock is held only during that block scope</td>
+      </tr>
+      <tr>
+        <td>Synchronized method locks on the object instance in which the method is contained</td>
+        <td>Synchronized block can lock on any object</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Synchronized</th>
+        <th>ReentrantLock</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Lock is released in the same order in which they were acquired</td>
+        <td>A lock can be released in any order</td>
+      </tr>
+      <tr>
+        <td>Lock is acquired using writing synchronized keyword</td>
+        <td>Lock on the shared data is acquired using <code>lock</code> method</td>
+      </tr>
+      <tr>
+        <td>Lock is released implicitly</td>
+        <td>Lock is released using <code>unlock</code> method</td>
+      </tr>
+      <tr>
+        <td>There is no way to interrupt the thread</td>
+        <td><code>lockInterruptibility</code> can be used to interrupt thread</td>
+      </tr>
+      <tr>
+        <td>All locks must be released in the same lexical scope (method)</td>
+        <td>A lock can be acquired and released in different scopes (methods)</td>
+      </tr>
+      <tr>
+        <td>The synchronized block must be fully contained within a single method</td>
+        <td>A <code>Lock</code> can have it is calls to <code>lock()</code> and
+          <code>unlock()</code> in separate methods</td>
+      </tr>
+      <tr>
+        <td>Having a timeout trying to get access to a synchronized block is not possible</td>
+        <td>Having a timeout trying to get access to a critical section is possible</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Comparable</th>
+        <th>Comparator</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Meant for default natural sorting order</td>
+        <td>Meant for customized sorting order</td>
+      </tr>
+      <tr>
+        <td>Present in <em>java.lang</em> package</td>
+        <td>Present in <em>java.util</em> package</td>
+      </tr>
+      <tr>
+        <td>Defines one method <em>compareTo</em></td>
+        <td>Defines two method <em>compareTo</em> and <em>equals</em></td>
+      </tr>
+      <tr>
+        <td>Implemented by all wrapper classes and String class</td>
+        <td>Implemented by us for custom comparison strategy</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Array</th>
+        <th>ArrayList</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Array is a fixed length data structure</td>
+        <td>ArrayList is a variable length data structure</td>
+      </tr>
+      <tr>
+        <td>Supports Array of primitive types as well as objects</td>
+        <td>Supports ArrayList of objects only</td>
+      </tr>
+      <tr>
+        <td>Array performs faster than ArrayList</td>
+        <td>ArrayList is slower compare to Array</td>
+      </tr>
+      <tr>
+        <td>Basic operations: <code>read, write</code> and <code>length</code></td>
+        <td>Additional operations: <code>insert, remove</code> and <code>contains</code></td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Array</th>
+        <th>LinkedList</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Array is a fixed length data structure</td>
+        <td>LinkedList is a variable length data structure</td>
+      </tr>
+      <tr>
+        <td>Elements are stored contiguously in memory</td>
+        <td>Elements are not stored randomly in memory</td>
+      </tr>
+      <tr>
+        <td>Provides index based access to elements</td>
+        <td>Does not provides index based access to elements</td>
+      </tr>
+      <tr>
+        <td>Search by index is O(1) and search by value is O(n)</td>
+        <td>Search by index is O(n) and search by value is O(n)</td>
+      </tr>
+      <tr>
+        <td>Insertion and deletion is slow</td>
+        <td>Insertion and deletion is fast</td>
+      </tr>
+      <tr>
+        <td>Array is preferred when frequent index based access to the elements is required</td>
+        <td>Linked list is preferred when frequent deletion or insertion is required</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>ArrayList</th>
+        <th>LinkedList</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ArrayList implements List interface</td>
+        <td>LinkedList implements both List and Queue interface</td>
+      </tr>
+      <tr>
+        <td>Internally uses an array to store the elements</td>
+        <td>Internally uses a doubly linked list to store the elements</td>
+      </tr>
+      <tr>
+        <td>Elements are stored contiguously in memory</td>
+        <td>Elements are not stored randomly in memory</td>
+      </tr>
+      <tr>
+        <td>Search by index is O(1) and search by value is O(n)</td>
+        <td>Search by index is O(n) and search by value is O(n)</td>
+      </tr>
+      <tr>
+        <td>Insertion and deletion is slow</td>
+        <td>Insertion and deletion is fast</td>
+      </tr>
+      <tr>
+        <td>ArrayList is preferred when frequent index based access to the elements is required</td>
+        <td>Linked list is preferred when frequent deletion or insertion is required</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>ArrayList</th>
+        <th>Vector</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ArrayList is not thread-safe</td>
+        <td>Vector is thread-safe as its all methods is synchronized</td>
+      </tr>
+      <tr>
+        <td>ArrayList is faster compared to Vector</td>
+        <td>Vector is slower compared to ArrayList</td>
+      </tr>
+      <tr>
+        <td>ArrayList is preferred in single-threaded environment</td>
+        <td>Vector is preferred in multi-threaded environment</td>
+      </tr>
+      <tr>
+        <td>ArrayList is not a legacy class</td>
+        <td>Vector is a legacy class</td>
+      </tr>
+      <tr>
+        <td>ArrayList increases its size 50% of the current size</td>
+        <td>Vector increases its size by doubling the array size</td>
+      </tr>
+      <tr>
+        <td>ArrayList uses the <i>Iterator</i> interface to traverse the elements</td>
+        <td>A Vector can use either <i>Iterator</i> or <i>Enumeration</i> interface to traverse the elements</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>List</th>
+        <th>Set</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>List is an ordered collection</td>
+        <td>Set is an unordered collection</td>
+      </tr>
+      <tr>
+        <td>List allows duplicate elements</td>
+        <td>Set does not allows duplicate elements</td>
+      </tr>
+      <tr>
+        <td>List impls are ArrayList, LinkedList and Vector</td>
+        <td>Set impls are TreeSet, HashSet and LinkedHashSet</td>
+      </tr>
+      <tr>
+        <td>List allows any number of <code>null</code> values</td>
+        <td>Set can have only a single <code>null</code> value at most</td>
+      </tr>
+      <tr>
+        <td>List interface has one legacy class called Vector</td>
+        <td>Set interface does not have any legacy class</td>
+      </tr>
+      <tr>
+        <td>List supports bi-directional traversal through ListIterator</td>
+        <td>Set only support uni-directional traversal through Iterator</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>HashMap</th>
+        <th>Hashtable</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>HashMap is not thread-safe</td>
+        <td>Hashtable is thread-safe as it is synchronized</td>
+      </tr>
+      <tr>
+        <td>HashMap allows one <code>null</code> key and many <code>null</code> values</td>
+        <td>Hashtable does not allow <code>null</code> keys or <code>null</code> values</td>
+      </tr>
+      <tr>
+        <td>HashMap maintains insertion order</td>
+        <td>Hashtable does not maintain insertion order</td>
+      </tr>
+      <tr>
+        <td>HashMap inherits the AbstractMap class</td>
+        <td>Hashtable inherits the Dictionary class</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>HashMap</th>
+        <th>ConcurrentHashMap</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>HashMap is not thread-safe</td>
+        <td>ConcurrentHashMap is thread-safe</td>
+      </tr>
+      <tr>
+        <td>Allows single <code>null</code> key and multiple <code>null</code> values</td>
+        <td>Does not allow any <code>null</code> keys or <code>null</code> values</td>
+      </tr>
+      <tr>
+        <td>Comparatively faster than ConcurrentHashMap</td>
+        <td>Comparatively slower than HashMap</td>
+      </tr>
+      <tr>
+        <td>The iterator in HashMap is fail-fast</td>
+        <td>The iterator in ConcurrentHashMap is fail-safe</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Frontend</th>
+        <th>Backend</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Frontend code is executed inside browser</td>
+        <td>Backend code is executed on server side</td>
+      </tr>
+      <tr>
+        <td>Frontend code is written using html, css and javascript</td>
+        <td>Backend code is written using server side languages</td>
+      </tr>
+      <tr>
+        <td>Frontend refers to view in MVC architecture</td>
+        <td>Backend refers to model and controller in MVC</td>
+      </tr>
+      <tr>
+        <td>Frontend is developed by frontend developer</td>
+        <td>Backend is developed by backend developer</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Web Server</th>
+        <th>Application Server</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Delivers static content</td>
+        <td>Delivers dynamic content</td>
+      </tr>
+      <tr>
+        <td>Content is delivered using HTTP protocol</td>
+        <td>Content is delivered using various protocol</td>
+      </tr>
+      <tr>
+        <td>Hosts and serves html, css or javascript files</td>
+        <td>Hosts and exposes bussiness logic to the client</td>
+      </tr>
+      <tr>
+        <td>Does not requires java development kit to function</td>
+        <td>Requires java development kit to function</td>
+      </tr>
+      <tr>
+        <td>Clients interact directly with the web server</td>
+        <td>Clients does not interact directly with the app server</td>
+      </tr>
+      <tr>
+        <td>Doest not interact with backend resources</td>
+        <td>Interact with backend resources like database</td>
+      </tr>
+      <tr>
+        <td>Apache, MS IIS. Nginx, GWS, NetWare</td>
+        <td>Tomcat, Glassfish, WebLogic, WebSphere</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Apache</th>
+        <th>Tomcat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Apache HTTP server is primarly a file server which serves html, css, image, audio, video, text files</td>
+        <td>Tomcat a is servlet engine that implements Servlet and JSP specification</td>
+      </tr>
+      <tr>
+        <td>Delivers static content</td>
+        <td>Delivers dynamic content</td>
+      </tr>
+      <tr>
+        <td>Content is delivered using HTTP protocol</td>
+        <td>Content is delivered using various protocol</td>
+      </tr>
+      <tr>
+        <td>Hosts and serves html, css or javascript files</td>
+        <td>Hosts and exposes bussiness logic to the client</td>
+      </tr>
+      <tr>
+        <td>Does not requires java development kit to function</td>
+        <td>Requires java development kit to function</td>
+      </tr>
+      <tr>
+        <td>Clients interact directly with the Apache HTTP server</td>
+        <td>Request that requires logic are forwarded to Tomcat</td>
+      </tr>
+      <tr>
+        <td>Doest not interact with backend resources</td>
+        <td>Interact with backend resources like database</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>GET</th>
+        <th>POST</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>GET requests is restricted to limited data transfer</td>
+        <td>GET requests supports a large amount of data transfer</td>
+      </tr>
+      <tr>
+        <td>Query strings are sent in the url of the GET request</td>
+        <td>Query strings are sent into POST request message body</td>
+      </tr>
+      <tr>
+        <td>GET is not secured</td>
+        <td>POST is completely secured</td>
+      </tr>
+      <tr>
+        <td>GET requests can be cached</td>
+        <td>POST requests are never cached</td>
+      </tr>
+      <tr>
+        <td>GET requests remain in the browser history</td>
+        <td>POST requests do not remain in the browser history</td>
+      </tr>
+      <tr>
+        <td>GET requests can be bookmarked</td>
+        <td>POST requests can not be bookmarked</td>
+      </tr>
+      <tr>
+        <td><code>GET form.jsp?name=dipu&email=dipu@gmail.com <br>HTTP 1.1 <br>host=www.w3school.com</code></td>
+        <td><code>POST form.jsp HTTP 1.1 <br>host=www.w3school.com <br>name=dipu&email=dipu@gmail.com</code></td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Spring</th>
+        <th>Spring Boot</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Spring is and open-source, lightweight framework used to develop web and enterprise application</td>
+        <td>Spring Boot is built on top of spring framework used to develop web and enterprise application</td>
+      </tr>
+      <tr>
+        <td>Most important feature is dependency injection</td>
+        <td>Most important feature is auto-configuration</td>
+      </tr>
+      <tr>
+        <td>Deployment descriptor is required to run the application</td>
+        <td>Does not require deployment descriptor to run the app</td>
+      </tr>
+      <tr>
+        <td>Configuration is done using XML file</td>
+        <td>Custom configuration is dony using annotation</td>
+      </tr>
+      <tr>
+        <td>Does not provide support for in-memory database</td>
+        <td>Provide support for in-memory database such as H2</td>
+      </tr>
+      <tr>
+        <td>Requires to set up server explicitly</td>
+        <td>Provides embedded server like tomcat or jetty</td>
+      </tr>
+      <tr>
+        <td>Requires to write a lot of code</td>
+        <td>Reduces the amount of code</td>
+      </tr>
+      <tr>
+        <td>Great for web or enterprise application</td>
+        <td>Great for standalone APIs</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Controller</th>
+        <th>RestController</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Used to mark classes as spring MVC controller</td>
+        <td>RestController is used for making restful web services</td>
+      </tr>
+      <tr>
+        <td>Controller is specific of Component</td>
+        <td>Combination of <em>Controller</em> and <em>ResponseBody</em></td>
+      </tr>
+      <tr>
+        <td>Returns an <i>view</i> as response</td>
+        <td>Returns an <i>object</i> as response instead of <i>view</i></td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Monolithic</th>
+        <th>Microservices</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Pages are slow to load</td>
+        <td>Pages are fast to load</td>
+      </tr>
+      <tr>
+        <td>All the code is in the application</td>
+        <td>Other applications can reuse the microservices</td>
+      </tr>
+      <tr>
+        <td>Pages are mostly static</td>
+        <td>Pages are more dynamic</td>
+      </tr>
+      <tr>
+        <td>Updating any pieces requires re-testing entire app</td>
+        <td>Does not requires re-testing entire application</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>SOAP</th>
+        <th>REST</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Simple Object Access Protocol</td>
+        <td>Representational State Transfer</td>
+      </tr>
+      <tr>
+        <td>SOAP is a protocol</td>
+        <td>REST is a architecture</td>
+      </tr>
+      <tr>
+        <td>Support HTTP and SMTP protocols</td>
+        <td>Support only HTTP protocol</td>
+      </tr>
+      <tr>
+        <td>SOAP is official</td>
+        <td>REST is not official</td>
+      </tr>
+      <tr>
+        <td>SOAP is heavyweight</td>
+        <td>REST is lightweight</td>
+      </tr>
+      <tr>
+        <td>Difficult to implement</td>
+        <td>Easy to implement</td>
+      </tr>
+      <tr>
+        <td>Data is exchanged between apps using XML format</td>
+        <td>Data is exchanged between using JSON or XML format</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>BeanFactory</th>
+        <th>ApplicationContext</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>BeanFactory is the most basic version of IOC containers</td>
+        <td>ApplicationContext extends the features of BeanFactory</td>
+      </tr>
+      <tr>
+        <td>BeanFactory supports lazy loading</td>
+        <td>ApplicationContext supports eager loading</td>
+      </tr>
+      <tr>
+        <td>BeanFactory instantiates a bean when we call the <code>getBean</code> method</td>
+        <td>ApplicationContext instantiates a singleton bean as soon as the container starts</td>
+      </tr>
+      <tr>
+        <td>BeanFactory provides code features</td>
+        <td>ApplicationContext is a superset of a BeanFactory</td>
+      </tr>
+      <tr>
+        <td>Preferred when memory usages are concerned</td>
+        <td>Preferred for web and enterprise application</td>
+      </tr>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr>
+        <th>JDBC</th>
+        <th>Hibernate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Needs to write code to map the object model's data to the schema of the relational model</td>
+        <td>Maps the object model's data to the schema of the database itself with help of annotations</td>
+      </tr>
+      <tr>
+        <td>Enables developers to create queries and update data to relational database using SQL</td>
+        <td>Uses HQL which is very similar to SQL but understand OO concepts like inheritance and association </td>
+      </tr>
+      <tr>
+        <td>Code needs to be written in a try catch block as it throws checked exception</td>
+        <td>Hibernate manages the exceptions itself by marking them as unchecked</td>
+      </tr>
+      <tr>
+        <td>Database dependent aka one needs to write different codes for different database</td>
+        <td>Database independent and same code can work for many databases with minor changes</td>
+      </tr>
+      <tr>
+        <td>Creating associations between relations is very hard</td>
+        <td>Associations like one-to-one, one-to-many, many-to-one and many-to-many can be acquired easily
+          with the help of annotations</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

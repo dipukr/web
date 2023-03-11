@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web</title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: whitesmoke;
+        margin-top: 20px;
+        width: 54%;
+        padding-left: 3%;
+        padding-right: 3%;
+        min-height: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+        padding-top: 40px;
+        background-color: white;
+        box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        padding-bottom: 100px;
+      }
+      table.mono {
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        width: 100%;
+        font-size: 16px;
+        word-spacing: -1px;
+        font-family: "DejaVu Serif";
+        background: rgba(0,0,0,0.01);
+        color: #28282B;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 4px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+      table.mono thead tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.mono thead tr th {
+        background-color: #009879;
+        padding: 8px 20px;
+        color: #ffffff;
+        text-align: left;
+        font-weight: normal;
+      }
+      table.mono tbody tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.mono tbody tr td {
+        padding: 15px 25px;
+      }
+      table.mono tbody tr td ul {
+        padding-left: 40px;
+        padding-top: 2px;
+        padding-bottom: 5px;
+        list-style: square;
+        font-size: 15px;
+      }
+      table.mono tbody tr td ul code {
+        font-size: 14px;
+      }
+      table.dual {
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        width: 100%;
+        color: #28282B;
+        background: rgba(0,0,0,0.01);
+        font-size: 16px;
+        word-spacing: -1px;
+        font-family: "DejaVu Serif";
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 4px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+      table.dual thead tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.dual thead tr th {
+        background-color: #009879;
+        padding: 8px 20px;
+        color: #ffffff;
+        text-align: center;
+        font-weight: normal;
+      }
+      table.dual tbody tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.dual tbody tr td {
+        padding: 5px 5px;
+        border: 2px solid #009879;
+        border-top: none;
+        font-size: 15px;
+        text-align: center;
+      }
+      table.dual tbody tr td:first-child {
+        color:firebrick;
+      }
+      table.dual tbody tr td:nth-child(3) {
+        color:firebrick;
+      }
+      table.list {
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        width: 100%;
+        font-size: 16px;
+        word-spacing: -1px;
+        font-family: "DejaVu Serif";
+        background: rgba(0,0,0,0.01);
+        color: #28282B;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 4px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+      table.list thead tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.list thead tr th {
+        background-color: #009879;
+        padding: 8px 20px;
+        color: #ffffff;
+        text-align: left;
+        font-weight: normal;
+      }
+      table.list tbody tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.list tbody tr td {
+        padding: 15px 50px;
+        line-height: 1.3;
+      }
+      table.list tbody tr td ul {
+        list-style: square;
+      }
+      table.list tbody tr td ul li ul {
+        padding-left: 40px;
+        font-size: 15px;
+      }
+      em {
+        color: brown;
+        font-weight: 500;
+        font-style: normal;
+      }
+      .just {
+        text-align: justify;
+        text-justify: inter-word;
+      }
+      pre {
+        background: #f8f8f8;
+        border: 3px solid #eeeeee;
+        font-size: 14px;
+        line-height: normal;
+        padding-top: 0px;
+        overflow: auto;
+        max-width: 99.2%;
+        font-family: "Source Code Pro";
+        width: 100%;
+        word-spacing: -2px;
+      }
+      code {
+        font-size: 16px;
+        font-family: "Consolas";
+        color: darkblue;
+      }
+      table.mono tbody tr td table {
+        border-collapse: collapse;
+        border: 2px solid #009879;
+        color: #28282B;
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 15px;
+      }
+      table.mono tbody tr td table tr th {
+        background: #009879;
+        color: white;
+        font-weight: normal;
+        padding: 4px 5px;
+        font-size: 16px;
+        border-bottom: 2px solid #009879;
+        border-left: 4px solid #009879;
+        border-right: 4px solid #009879;
+      }
+      table.mono tbody tr td table tr td {
+        padding: 10px 20px;
+        margin: none;
+        border-bottom: 2px solid #009879;
+        border-left: 4px solid #009879;
+        border-right: 4px solid #009879;
+      }
+      table.mono tbody tr td table.one {
+        border-collapse: collapse;
+        border: 2px solid #009879;
+        color: #28282B;
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 15px; 
+      }
+      table.mono tbody tr td table.one tr {
+        overflow: hidden;
+        border-radius: 4px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+      table.mono tbody tr td table.one tr th {
+        background: #009879;
+        color: white;
+        font-weight: normal;
+        padding: 4px 5px;
+        font-size: 16px;
+        text-align: center;
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.mono tbody tr td table.one tr td {
+        padding: 10px 15px;
+        margin: none;
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.mono tbody tr td table tr td code {
+        font-size: smaller;
+      }
+      strong {
+        font-style: normal;
+        font-weight: normal;
+        color:purple;
+      }
+    </style>
+  </head>
+  <body>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>HTTP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            HTTPs is an application layer, stateless, connectionless, request-response protocol
+            which dictates the format by which client request web resources from a server and format by which server
+            returns resources to the client. HTTP is an applcation layer protocol for sending and receiving
+            messages over a network. <br> <br>
+            <table>
+              <tr>
+                <td><i>GET</i> - get a single item or collection</td>
+              </tr>
+              <tr>
+                <td><i>POST</i> - add an item to a collection</td>
+              </tr>
+              <tr>
+                <td><i>PUT</i> - edit an item that already exists in a collection</td>
+              </tr>
+              <tr>
+                <td><i>DELETE</i> - delete an item in a collection</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="dual">
+      <thead>
+        <tr>
+          <th colspan="2">HTTP method</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GET</td>
+          <td>Retrieve data from a specified resource</td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td>Submit data to be processed to a specified resource</td>
+        </tr>
+        <tr>
+          <td>PUT</td>
+          <td>Update a specified resource</td>
+        </tr>
+        <tr>
+          <td>DELETE</td>
+          <td>Delete a specified resource</td>
+        </tr>
+        <tr>
+          <td>PATCH</td>
+          <td>Update partial resource</td>
+        </tr>
+        <tr>
+          <td>OPTIONS</td>
+          <td>Returns the supported HTTP methods</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Framework</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 96%;">
+              <tr>
+                <td>
+                  Framework is a tool that provides ready-made generic components
+                  or solutions that are customized by user code to provide application specific
+                  functionality.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  A framework can include support programs, compilers, code libraries, toolsets 
+                  and APIs to enable development of an application or solution.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  With traditional programming, the custom code calls into the library to access reusable code but 
+                  with IOC the framework calls on custom pieces of code when necessary.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  The purpose of a framework is to assist in development, providing standard and
+                  low level functionality.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Goal of a framework to save time and money required to build an application.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>MVC Architecture</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Model-view-controller is a software architecture pattern for
+            graphical applications. It is a three-layered architecture namely a
+            <em>model</em> that deals with the business logic, <br>
+            a <em>view</em> for user interface and a <em>controller</em> to
+            handle the user input, manipulate data and update the <em>view</em>.
+            MVC separate the business logic and presentation layer from each other.
+            <br>
+            <br>
+
+            <table style="width: 94%">
+              <tr>
+                <td>
+                  <i>Model</i> component represents the data and
+                  business logic of the application. Model has no knowledge of
+                  the <em>view</em> or the <em>controller.</em>
+                  Model is responsible for managing the data of the application.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <i>View</i> component is the user interface,
+                  responsible for displaying the current state of the model to
+                  the user and provides a means for the user to interact
+                  with the application.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <i>Controller</i> defines applcation
+                  behaviours, handles HTTP requests and selects
+                  <em>view</em> for response. Controller also fetches data from view and transfers that <br>to model
+                  for processing and vice versa.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Modular Architecture</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding-right: 35px;">
+            Modular or layered architecture consists of different types of
+            components. Despite having a logically modular architecture, the
+            application is packaged and deployed as a monolith.
+            A monolith  is a single
+            app that holds a full collection of functionality.
+            All of the components (UI layer, business logic layer, dataccess layer) of a
+            monolith application reside in one area.
+            <br><br>
+            <table style="width: 88%; text-align: left;">
+              <tr>
+                <td>
+                  <i>Presentation</i> - responsible for handling HTTP requests
+                  and responding with either HTML or JSON/XML for web services
+                  APIs
+                </td>
+              </tr>
+              <tr>
+                <td><i>Bussiness logic</i> - business logic of application</td>
+              </tr>
+              <tr>
+                <td>
+                  <i>Database access</i> - data access objects responsible for
+                  accessing the DB
+                </td>
+              </tr>
+            </table> <br>
+            <table class="one" style="width: 88%;">
+              <tr>
+                <th>Drawback of Monolith</th>
+              </tr>
+              <tr>
+                <td>Application becomes too large to fully understand and made changes</td>
+              </tr>
+              <tr>
+                <td>We need to re-deploy the entire application on each update</td>
+              </tr>
+              <tr>
+                <td>Size of the application can slow down the start-up time</td>
+              </tr>
+              <tr>
+                <td>Impact of a change is not very well understood</td>
+              </tr>
+              <tr>
+                <td>Bug in any module can bring down entire application</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Microservices</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 15px 24px">
+            Microservices architecture is an approach in which a single
+            application is composed of many loosely coupled and independently
+            deployable, highly maintainable and testable smaller services. These
+            services have their own technology stack and database and
+            communicate with one another using the <strong>REST APIs</strong>. 
+            <br>
+            <br>
+            Modular, services-oriented application architecture comprised of
+            loosely connected and independently running microservices. These
+            microservices usually offer API
+            so that other microservices and applications can integrate with them.
+            <br>
+            <br>
+            Rather than programming all application functions into a single
+            piece of source code as a monolith does - the microservices
+            architecture isolates each function <br>
+            as a small, autonomously-running application (a microservice).
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Benefits of Microservices</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Decomposing an application into different smaller services have many
+            benefits <br>
+            <br>
+            <table style="width: 90%">
+              <tr>
+                <td>
+                  Modularizes the application which makes it easier to
+                  understand, develop and test in comparison to the monolithic
+                  architecture.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Parallelizes development by enabling small teams to develop,
+                  deploy and scale their respective services independently.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Code can be updated more easily - new features or
+                  functionality can be added without touching the entire
+                  application.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Teams can use different stacks and different programming
+                  languages for different components.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Components can be scaled independently of one another,
+                  reducing the waste and cost associated with having to scale
+                  entire applications.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Makes it fault-tolerance as overall application cannot be
+                  affected by the failure of a single module.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Web Services</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 100%; text-align: left;">
+              <tr>
+                <td>
+                  <i>Microservices</i> architecture is an application architectural style and
+                  an application scoped concept which enables the internals of a
+                  single application to be broken <br> up into many small pieces that can
+                  be independently changed, scaled and administered. It does not
+                  define how applications talk to each other.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Web services provide a web-based interface that makes the data or functionality of an application
+                  available to other applications on the web. A web service helps us expose the functionality
+                  or data of an application to another applications over world wide web. Web service is a
+                  strategy to make the services of one application available to other applications via a
+                  web interface.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <i>SOAP</i> is an integration architectural style and an
+                  enterprise-wide concept. APIs designed with SOAP use XML for
+                  their message format and receive requests through HTTP or
+                  SMTP. SOAP makes it easier for apps running <br>
+                  in different environments or written in different languages to
+                  share data.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>API</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding-right: 40px">
+            <ul>
+              <li>A set of protocols that define how two apps share and modify each other's data </li>
+              <li>A set of methods of communication between various software components</li>
+              <li>Allows separate software entities to share data and code together</li>
+              <li>API sits between two software components</li>
+              <li>API enables software integrations</li>
+              <li>API is simply an interface</li>
+              <li>API is a way to making request into a component</li>
+              <li>Contract provided by one piece of software to another</li>
+              <li>An interface decouples the caller from the implementation</li>
+              <li>Someone calling an API should have no idea how it is implemented</li>
+              <li>Mechanism: we get data from an application or request changes to that data</li>
+              <li>
+                Microservices and API:
+                <ul>
+                  <li>APIs are interfaces</li>
+                  <li>Microservices are components</li>
+                  <li>Microservices and APIs are related but not same</li>
+                  <li>Microservices can be used to expose one or more API</li>
+                  <li>Not all microservice components expose API</li>
+                  <li>Microservices communicate with each other via API</li>
+                  <li>Microservices exposes data or services for public consumption through API
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Web Server</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <li>Web server stores and delivers the content for a website such as html, css,
+                JS, fonts, images, audio, video and 
+                application data to clients that request it</li>
+              <li>A web server can host a single website or multiple websites</li>
+              <li>Web server communicates with web clients using the HTTP</li>
+              <li>Most common type of client is a web browser program</li>
+              <li>Most common web servers are:
+                <ul>
+                  <li>Internet Information Services</li>
+                  <li>Sun Java System Web Server</li>
+                  <li>Apache HTTP Sever</li>
+                  <li>Jigsaw Server</li>
+                  <li>Nginx Web Server</li>
+                </ul>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Application Server</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            An application servers extend the functionalities of a web server to handle dynamic page requests.
+            An application server works with a web server to handle requests <br> for dynamic content such
+            as servlets from web applications. Application server return a dynamic, customized 
+            response to a client request.
+            <br> <br>
+            Most commonly used application servers are:
+            <ul>
+              <li>Tomcat</li>
+              <li>WebLogic</li>
+              <li>WebSphere</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>JSON</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            JSON is an standard file and data interchange format which
+            uses human-readable text to store and transmit data objects consisting
+            of name-value pairs and arrays.
+            <ul style="padding: 15px 25px; font-size: 16px;">
+              <li>JSON stands for javascript object notation</li>
+              <li>JSON is programming language independent</li>
+              <li>JSON is self-describing and easy to understand</li>
+              <li>JSON is a lightweight format for storing and transporting data</li>
+              <li>JSON is often used when data is sent from a server to a web page</li>
+            </ul>
+            Syntax rules of JSON:
+            <ul>
+              <li>JSON data is written as name-value pairs</li>
+              <li>JSON data is separated by commas</li>
+              <li>JSON objects are written inside curly braces</li>
+              <li>JSON arrays are written inside square brackets</li>
+            </ul> <br>
+            JSON values must be one of the following data types:
+            <ul>
+              <li>String</li>
+              <li>Number</li>
+              <li>Object</li>
+              <li>Array</li>
+              <li>Boolean</li>
+              <li>Null</li>
+            </ul>
+            <br>
+            <pre>
+
+              "firstName": "Mirra"
+              
+              {"firstName": "Mirra", "lastName": "Alfassa"}
+              
+              "employees":[
+                  {"firstName": "Mirra", "lastName": "Alfassa"},
+                  {"firstName": "Aurobindo", "lastName": "Ghosh"},
+                  {"firstName": "Alok", "lastName": "Pandey"}
+              ]
+            </pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Coupling</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 97%">
+              <tr>
+                <td>
+                  Coupling is a measure of how closely software modules are bound to each other.
+                  Coupling is the degree to which changes made to a component force a need <br>
+                  for a change in other components or modules.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Tight coupling is when a change in one component requires a change in other components.
+                  Tight coupling leads to code fragility and code rigidity.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Loose coupling means that components are independent of each other and thus <br> a change
+                  in one component would not affect other components which 
+                  is the <br> sign of testable, maintainable, well-structured and readable software.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Code fragility is the likelihood that software will break in many places
+                  every time there is a change.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Code rigidity is the degree of difficulty in making changes to the software.
+                </td>
+              </tr>
+            </table> <br>
+            <table class="one" style="width: 97%;">
+              <tr>
+                <th>Advantages of Loosely Coupled</th>
+              </tr>
+              <tr>
+                <td>
+                  Developers can quickly evolve loose coupled software because it encourages many
+                  changes without breaking the existing code.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Loose coupling enhances software agility because it promotes iteration,
+                  meaning one can quickly add a new feature or functionality.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Inversion of Control</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 96%;">
+              <tr>
+                <td>
+                  Inversion of control is a principle by which the control of creating,
+                  configuring, assembling and destroying objects is transferred from the programmer
+                  to an inversion of control container.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Traditional programming: programmer has control of creating, initializing and
+                  assembling objects and programmer is responsible for writing code to create,
+                  initialize and assemble objects.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  IoC: since control of creating, initializing and assembling objects is transferred
+                  to a container, we does not have to write code to create, initialize and assemble objects.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Instead of relying on application code to define how
+                  objects relate to each other relationships are defined by an IoC container
+                  through dependency injection which
+                  makes our program code loosely coupled.
+                </td>
+              </tr>
+              <tr>
+                <td>All we need to do is to annotate our classes, methods or fields then container
+                  will read all those annotation and generate a fully configured application.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Dependency</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Dependency is just an object that an object need to function which can be
+            provided inside the application code by programmer or
+            from the outside the application <br> code by a container. <br> <br>
+            Let assume we have an object <em>Book</em> which have a field <em>Author</em>, then
+            <em>Book</em> is said <br> to be dependent on <em>Author</em>. <br> <br>
+            <pre style="width: 48%; float: left;">
+              
+        public class Book {
+            priavte String name;
+            private Author author;
+        }
+        </pre>
+        <pre style="width: 48%; float: right;">
+              
+        public class Author {
+            private String name;
+            priavte String email;
+        }
+            </pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Dependency Injection</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 93%;">
+              <tr>
+                <td>
+                  Dependency injection is a mechanism where container
+                  injects dependencies into our application from outside rather than having them manually
+                  fulfilled inside our application code by us.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Creating and managing dependencies inside our application code which can be
+                  messy and leads to tightly coupled classes we can instead delegate control 
+                  to the spring container.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Our class simply tells the container what dependencies it needs to run and the
+                  container provides the appropriate dependencies to our class from outside the
+                  application code at the runtime.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Dependency injection is a design pattern through which inversion of control
+                  is implemented where the control being inverted is the setting of object's
+                  dependencies. Dependency injection is a form of inversion of control.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Dependency injection performed during building of spring context.
+                  When a spring bean needs a dependency, container resolves all dependencies and 
+                  <em>autowires</em> the application together
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Process of connecting objects to other objects or injecting objects into other
+                  objects is done by container rather than by the programmer.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Dependency Injection helps us decouple our application objects from each other and
+                  AOP helps us decouple cross-cutting concerns from the objects that they affect.
+                </td>
+              </tr>
+            </table> <br>
+            <pre style="width: 92%; margin-left: auto; margin-right: auto;">
+
+    public class TextEditor {
+        private SpellChecker spellCherker;
+        private Completer completer;
+        
+        @Autowired
+        public TextEditor(SpellChecker spellChecker, Completer completer) {
+            this.spellChecker = spellChecker;
+            this.completer = completer;
+        }
+    }
+            </pre>    
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Advantages of DI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 100%;">
+              <tr>
+                <td>
+                  Dependency injection makes our program code loosely coupled. Loosely coupled
+                  software are easy to test and maintain
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Dependency injection makes java classes or components to be 
+                  independent <br> of other classes or components
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Dependency injection enables us to test java classes independently of other classes
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Dependency injection removes a source of concrete dependency from your code
+                </td>
+              </tr>
+              <tr>
+                <td>Easy to switch between different implementations of a class at runtime</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Injection Types</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            There are three options for how dependencies can be injected into a bean:
+            <ul>
+              <li>Through a constructor</li>
+              <li>Through setter methods</li>
+              <li>Through reflection, directly into field</li>
+            </ul> <br>
+            <table style="width: 86%;">
+              <tr>
+                <td><i>Constructor injection</i> - dependencies are injected through <em>constructor</em> by
+                the container where each parameter represents a dependency we want to set</td>
+              </tr>
+              <tr>
+                <td><i>Setter injection</i> - dependencies are injected by calling <em>setter methods</em>
+                by the container</td>
+              </tr>
+              <tr>
+                <td><i>Field injection</i> - dependencies are injected directly into field through the
+                 <em>reflection</em></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Circular Dependency</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 97%;">
+              <tr>
+                <td>
+                  Consider classes <em>A</em> and <em>B</em> - where <em>A</em> is dependent on <em>B</em> and
+                  <em>B</em> is dependent on <em>A</em>. <em>Constructor</em> injection will be failed in this case and
+                  <em>bean currently in creation exception</em> will be thrown.
+                  
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <em>Setter</em> injection will be preferred in case of circular dependency.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Use constructor arguments for mandatory dependencies and setters for optional dependencies.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Constructor based DI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <pre style="width: 48%; float: left;">
+
+    @Configuration          
+    public class Config {
+        @Bean
+        @Scope("prototype")
+        public Person getPerson() {
+            return new Person();
+        }
+    }
+    public class Student {
+        private Person person;
+        @Autowired
+        public Student(Person person) {
+            this.person = person;
+        }
+    }
+           </pre>
+           <pre style="width: 48%; float: right;">
+
+    @Component
+    public class Person {
+        private String name;
+        public Person(String name) {
+            this.name = name;
+        }
+    }            
+    @Component
+    public class Student {
+        private Person person;
+        @Autowired
+        public Student(Person person) {
+            this.person = person;
+        }
+    }
+           </pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Spring</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 98%;">
+              <tr>
+                <td>
+                  Spring framework is an application framework and inversion of control container for the
+                  java platform.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Spring Boot is an extension of the spring framework that allows us to shorten
+                  the process needed to build a web application by using auto-configuration.
+                </td>
+              </tr>
+              <tr>
+                <td>Spring Boot is built on top of spring framework and is auto-configured. <br>
+                  Custom configuration happens through annotations.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Spring Boot auto-configuration represents a way to auto configure a spring
+                  application based on the dependencies that are present on the classpath.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Spring Boot make development faster and easier by eliminating the need for defining
+                  certain beans that are included in the auto-configuration classes.
+                </td>
+              </tr>
+              <tr>
+                <td>Spring Boot provide embedded server like Tomcat and Jetty.</td>
+              </tr>
+              <tr>
+                <td>Spring Boot provides spring-boot-starters.</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Spring Initializer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 15px 23px;">
+            Spring initializr is a web-based tool that generates the spring boot project structure.
+            Modern integrated development environments have integrated spring initializr that provides
+            the initial project structure. <br> <br>
+            Spring initializer helps us choose different configuration for our project:
+            <ul>
+              <li>Spring boot version as dependencies are added based on the version</li>
+              <li>Build tools (Maven or Gradle) to build the application</li>
+              <li>Dependencies required for the project</li>
+              <li>Language (Java, Kotlin, Groovy)</li>
+              <li>Project name and package name</li>
+              <li>Packaging format (jar, war)</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Spring Boot Starters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Spring boot starters are dependency descriptors that can be added in <i>pom.xml</i> file.
+            Spring boot starters were built to address the manual dependencies management. Starters 
+            can help us to reduce the number of manually added dependencies just by adding one dependency. <br> <br>
+            Advantages of starters:
+            <ul>
+              <li>Increases productivity by decreasing the overall configuration time for project</li>
+              <li>No need to remember the name and version of the dependencies</li>
+              <li>Number of dependencies to be added is decreased</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="dual">
+      <thead>
+        <tr>
+          <th colspan="2">Common Starters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>spring-boot-starter</td>
+          <td>Core starter, autoconfiguration support, logging, YAML</td>
+        </tr>
+        <tr>
+          <td>spring-boot-starter-web</td>
+          <td>Starter for building web, including RESTful, applications using 
+            Spring MVC. Uses Tomcat as the default embedded container</td>
+        </tr>
+        <tr>
+          <td>spring-boot-starter-data-jpa</td>
+          <td>Starter for using Spring Data JPA with Hibernate</td>
+        </tr>
+        <tr>
+          <td>spring-boot-starter-mail</td>
+          <td>Starter for using JavaMailSender and Spring Framework's email sending support</td>
+        </tr>
+        <tr>
+          <td>spring-boot-starter-security</td>
+          <td>Starter for using Spring Security</td>
+        </tr>
+        <tr>
+          <td>spring-boot-starter-jdbc</td>
+          <td>Starter for using Spring Data JDBC</td>
+        </tr>
+        <tr>
+          <td>spring-boot-starter-json</td>
+          <td>Starter for reading and writing JSON</td>
+        </tr>
+        <tr>
+          <td>spring-boot-starter-test</td>
+          <td>Starter for testing Spring Boot applications with libraries including 
+            JUnit Jupiter, Hamcrest and Mockito</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>POJO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Plain old java object is an ordinary object not bound by any special restriction.
+            Plain old java object is easy to write and increases readability of program which
+            increases maintainability of our application. <br> <br>
+            A plain old java object class should not:
+            <ul>
+              <li>Extends any class</li>
+              <li>Implements an interface</li>
+              <li>Contain any annotation from outside</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Java Bean</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            A <em>JavaBean</em> is simply a class that is written using <em>JavaBean</em> guidelines which:
+            <ul>
+              <li>Must implements <code>Serializable</code> or <code>Externalizable</code> interface</li>
+              <li>Must be declared <code>public</code> to be accessible to all</li>
+              <li>Must have a no-argument constructor</li>
+              <li>Have all the fields defined as <code>private</code> to prevent direct access</li>
+              <li>Must contain <code>getter</code> and <code>setter</code> methods for every instance fields</li>
+            </ul> <br>
+            <table class="one" style="width: 90%;">
+              <tr>
+                <th>Disadvantages of Java Bean</th>
+              </tr>
+              <tr>
+                <td>
+                  Mutability - our JavaBeans are mutable due to their setter methods - this could lead
+                  to concurrency or consistency issue
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Boilerplate - we must introduce getters for all properties and setters for most,
+                  much of this might be unnecessary
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Spring Bean</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 98%;">
+              <tr>
+                <td>
+                  Beans are the objects whose entire life cycle is managed by the spring container.
+                  Beans can defined in spring either by using <em>xml-based</em> configuration, java-based
+                  configuration or by using 
+                  <em>annotation-based configuration</em>. 
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Beans can be defined using <code>&lt;bean></code> tag inside <code>&lt;beans></code> tag
+                  in xml-based configuration and using <code>Bean</code> annotation in java-based
+                  configuration and
+                  using the annotations like <code>Component, 
+                  Service, Controller</code> or <code>Repository</code> on the top of the
+                  class definition in annotation-based configuration.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Annotated beans is registered with spring context which is done
+                  by performing <br> a package scan of all classes in packages in our project.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Key advantage of making any class as bean is that its complete life cycle
+                  will be managed by <em>spring container</em> which helps us to
+                  achieve <em>decoupling</em>.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Bean life cycle refers to when and how the bean is instantiated and what
+                  action <br> it performs when it is alive and when and how it is destroyed.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="dual">
+      <thead>
+        <tr>
+          <th colspan="2">Bean Scope Types</a></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>singleton</td>
+          <td>Single bean object instance per spring container (default)</td>
+        </tr>
+        <tr>
+          <td>prototype</td>
+          <td>Produces a new instance each and every time a bean is requested</td>
+        </tr>
+        <tr>
+          <td>request</td>
+          <td>Scopes a single bean definition to the lifecycle of a single HTTP request</td>
+        </tr>
+        <tr>
+          <td>session</td>
+          <td>A single instance will be created and available during lifecycle of an HTTP session</td>
+        </tr>
+        <tr>
+          <td>application</td>
+          <td>A single instance will be created and available during lifecycle of ServletContext</td>
+        </tr>
+        <tr>
+          <td>websocket</td>
+          <td>A single instance will be created and available during lifecycle of WebSocket</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Spring IoC Container</a></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 90%;">
+              <tr>
+                <td>Container manages a number of beans. These beans typically collaborate with
+                  each other and thus have dependencies between themselves.</td>
+              </tr>
+              <tr>
+                <td>The container is responsible for creating, configuring and assembling <br> a number of beans
+                  by reading configuration metadata.</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

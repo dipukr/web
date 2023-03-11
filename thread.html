@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thread</title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: whitesmoke;
+        margin-top: 20px;
+        width: 54%;
+        padding-left: 3%;
+        padding-right: 3%;
+        min-height: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+        padding-top: 40px;
+        background-color: white;
+        box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        padding-bottom: 100px;
+      }
+      table.mono {
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        width: 100%;
+        font-size: 16px;
+        word-spacing: -1px;
+        font-family: "DejaVu Serif";
+        background: rgba(0,0,0,0.01);
+        color: #28282B;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 4px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+      table.mono thead tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.mono thead tr th {
+        background-color: #009879;
+        padding: 8px 20px;
+        color: #ffffff;
+        text-align: left;
+        font-weight: normal;
+      }
+      table.mono tbody tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.mono tbody tr td {
+        padding: 15px 25px;
+      }
+      table.mono tbody tr td ul {
+        padding-left: 40px;
+        padding-top: 2px;
+        padding-bottom: 5px;
+        list-style: square;
+        font-size: 15px;
+      }
+      table.mono tbody tr td ul code {
+        font-size: 14px;
+      }
+      table.dual {
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        width: 100%;
+        color: #28282B;
+        background: rgba(0,0,0,0.01);
+        font-size: 16px;
+        word-spacing: -1px;
+        font-family: "DejaVu Serif";
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 4px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+      table.dual thead tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.dual thead tr th {
+        background-color: #009879;
+        padding: 8px 20px;
+        color: #ffffff;
+        text-align: center;
+        font-weight: normal;
+      }
+      table.dual tbody tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.dual tbody tr td {
+        padding: 5px 5px;
+        border: 2px solid #009879;
+        border-top: none;
+        font-size: 15px;
+        text-align: center;
+      }
+      table.dual tbody tr td:first-child {
+        color:firebrick;
+      }
+      table.dual tbody tr td:nth-child(3) {
+        color:firebrick;
+      }
+      table.list {
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        width: 100%;
+        font-size: 16px;
+        word-spacing: -1px;
+        font-family: "DejaVu Serif";
+        background: rgba(0,0,0,0.01);
+        color: #28282B;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 4px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+      table.list thead tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.list thead tr th {
+        background-color: #009879;
+        padding: 8px 20px;
+        color: #ffffff;
+        text-align: left;
+        font-weight: normal;
+      }
+      table.list tbody tr {
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.list tbody tr td {
+        padding: 15px 50px;
+        line-height: 1.3;
+      }
+      table.list tbody tr td ul {
+        list-style: square;
+      }
+      table.list tbody tr td ul li ul {
+        padding-left: 40px;
+        font-size: 15px;
+      }
+      em {
+        color: brown;
+        font-weight: 500;
+        font-style: normal;
+      }
+      .just {
+        text-align: justify;
+        text-justify: inter-word;
+      }
+      pre {
+        background: #f8f8f8;
+        border: 3px solid #eeeeee;
+        font-size: 14px;
+        line-height: normal;
+        padding-top: 0px;
+        overflow: auto;
+        max-width: 99.2%;
+        font-family: "Source Code Pro";
+        width: 100%;
+        word-spacing: -2px;
+      }
+      code {
+        font-size: 16px;
+        font-family: "Consolas";
+        color: darkblue;
+      }
+      table.mono tbody tr td table {
+        border-collapse: collapse;
+        border: 2px solid #009879;
+        color: #28282B;
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 15px;
+      }
+      table.mono tbody tr td table tr th {
+        background: #009879;
+        color: white;
+        font-weight: normal;
+        padding: 4px 5px;
+        font-size: 16px;
+        text-align: center;
+        border-bottom: 2px solid #009879;
+        border-left: 4px solid #009879;
+        border-right: 4px solid #009879;
+      }
+      table.mono tbody tr td table tr td {
+        padding: 10px 20px;
+        margin: none;
+        border-bottom: 2px solid #009879;
+        border-left: 4px solid #009879;
+        border-right: 4px solid #009879;
+      }
+      table.mono tbody tr td table.one {
+        border-collapse: collapse;
+        border: 2px solid #009879;
+        color: #28282B;
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 15px; 
+      }
+      table.mono tbody tr td table.one tr {
+        overflow: hidden;
+        border-radius: 4px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+      table.mono tbody tr td table.one tr th {
+        background: #009879;
+        color: white;
+        font-weight: normal;
+        padding: 4px 5px;
+        font-size: 16px;
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.mono tbody tr td table.one tr td {
+        padding: 10px 20px;
+        margin: none;
+        border-bottom: 2px solid #009879;
+        border-left: 2px solid #009879;
+        border-right: 2px solid #009879;
+      }
+      table.mono tbody tr td table tr td code {
+        font-size: smaller;
+      }
+      strong {
+        font-style: normal;
+        font-weight: normal;
+        color:purple;
+      }
+    </style>
+  </head>
+  <body>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Multithreading</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 97%;">
+              <tr>
+                <td>
+                  Multithreading is a process of executing multiple threads simultaneously.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Multithreaded programs are capable of doing more than one tasks in parallel.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Multithreading allows different parts of the program to execute simultaneously.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Applications that perform several tasks that are not dependent on one another 
+                  benefit the most from multithreading.
+                </td>
+              </tr>
+              <tr>
+                <td>Parallelism is about doing multiple tasks at once.</td>
+              </tr>
+              <tr>
+                <td>Concurrency is about dealing with multiple tasks at once.</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Thread</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding-right: 35px;">
+            A thread is a single path of execution in a process.  A thread has separate execution path.
+            A path of execution is sequential execution of a set of instructions from start to end.
+            Java application can have multiple threads running concurrently which can 
+            communicate with each other to achieve a common goal.
+            Each java program has a special thread created by the JVM called the main thread.
+            Thread class defines a thread but the code to be executed by the thread can be provided
+            by any class that implements the <i>Runnable</i> interface. <br> <br>
+            <table class="one" style="width: 85%; text-align: left;">
+              <tr>
+                <th>Creating threads</th>
+              </tr>
+              <tr>
+                <td>
+                  Implement the Runnable interface and pass an instance of the class
+                  implementing the Runnable interface to the Thread constructor.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Extend Thread itself and override its run method.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Thread Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Every thread has a priority.
+            The thread scheduler uses priority to determine which thread should be allowed to execute.
+            Threads with higher priority are executed in preference to threads with lower priority. <br> <br>
+            When multiple threads are ready to execute then JVM will selects and
+            executes the Runnable thread which has the highest priority.
+            In case two threads have the same priority then JVM will execute them in FIFO order. <br> <br>
+            <pre>
+              
+              Thread thread = new Thread("childThread")
+              thread.setPriority(Thread.NORM_PRIORITY)
+              thread.setPriority(Thread.MIN_PRIORITY)
+              thread.setPriority(Thread.MAX_PRIORITY)
+            </pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="dual">
+      <thead>
+        <tr>
+          <th colspan="2">Thread Methods</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="width: 20%;">getName</td>
+          <td>Returns name of this thread</td>
+        </tr>
+        <tr>
+          <td>setName</td>
+          <td>Changes the name of this thread</td>
+        </tr>
+        <tr>
+          <td>getPriority</td>
+          <td>Returns priority of this thread</td>
+        </tr>
+        <tr>
+          <td>setPriority</td>
+          <td>Changes the priority of this thread</td>
+        </tr>
+        <tr>
+          <td>getState</td>
+          <td>Returns the state of this thread</td>
+        </tr>
+        <tr>
+          <td>setDaemon</td>
+          <td>Marks this thread as either a daemon thread or a user thread</td>
+        </tr>
+        <tr>
+          <td>isAlive</td>
+          <td>Tests if this thread is alive</td>
+        </tr>
+        <tr>
+          <td>isDaemon</td>
+          <td>Tests if this thread is a daemon thread</td>
+        </tr>
+        <tr>
+          <td>isInterrupted</td>
+          <td>Tests whether this thread has been interrupted</td>
+        </tr>
+        <tr>
+          <td>interrupt</td>
+          <td>Interrupts this thread</td>
+        </tr>
+        <tr>
+          <td>start</td>
+          <td>Causes thread to begin execution</td>
+        </tr>
+        <tr>
+          <td>run</td>
+          <td>If thread was constructed using <i>Runnable</i> object then that <i>Runnable</i> object's run 
+            method is called otherwise does nothing and returns</td>
+        </tr>
+        <tr>
+          <td>join</td>
+          <td>Wait for this thread to die. <br>
+            Asks main thread to wait till child thread finishes execution</td>
+        </tr>
+        <tr>
+          <td>sleep</td>
+          <td>Causes the currently executing thread to sleep (temporarily cease execution) for the specified
+            number of millis (does not release object lock)</td>
+        </tr>
+        <tr>
+          <td>currentThread</td>
+          <td>Returns a reference to the currently executing thread object</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="dual">
+      <thead>
+        <tr>
+          <th colspan="2">Thread State</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="width: 20%;">NEW</td>
+          <td>A newly created thread that has not yet started the execution</td>
+        </tr>
+        <tr>
+          <td>RUNNABLE</td>
+          <td>Either running or ready for execution but waiting for resource allocation</td>
+        </tr>
+        <tr>
+          <td>BLOCKED</td>
+          <td>Thread is waiting to acquire a monitor lock to enter (execute) a synchronized-block or
+            synchronized-method</td>
+        </tr>
+        <tr>
+          <td>WAITING</td>
+          <td>Thread is waiting for some other thread to perform a particular action without any time limit
+          </td>
+        </tr>
+        <tr>
+          <td>TIMED_WAITING</td>
+          <td>Thread is waiting for some other thread to perform a specific action <br> for a specified period</td>
+        </tr>
+        <tr>
+          <td>TERMINATED</td>
+          <td>Thread has completed its execution</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Waiting and Blocking</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 100%;">
+              <tr>
+                <td>
+                  A thread goes to <em>waiting state</em> once it calls <em>wait</em> 
+                  on an object or <em>Thread.join</em> method.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  A thread in the <em>waiting</em> state is waiting for a signal from another thread which
+                  will then remain in this state until another thread calls
+                  <em>notify</em> or <em>notifyAll</em> method.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Once this thread is notified, it will not be runnable as it might be that other threads
+                  are also notified using <em>notifyAll</em>,
+                  so it will be in <em>blocked state</em> till it gets its chance.
+                </td>
+              </tr>
+            </table> <br>
+            <table style="width: 100%;">
+              <tr>
+                <td>
+                  A <em>blocking</em> state will occur whenever a thread tries to acquire lock on object
+                  and some other thread is already holding the lock.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  In the <em>blocking</em> state, a thread is about to enter a <em>synchronized</em> section but
+                  there is another thread currently running inside a <em>synchronized</em> block on the
+                  same object. The first thread must then wait for the second thread to exit block.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Interrupt</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 96%">
+              <tr>
+                <td>
+                  If any thread is in sleeping or waiting state (sleep or wait is invoked),
+                  calling the <i>interrupt</i> method on the thread, breaks out the sleeping or
+                  waiting state throwing <i>InterruptedException</i>.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  If the thread is not in the 
+                  sleeping or waiting state, calling the <i>interrupt</i> method performs normal
+                  behavior and doesvnot interrupt the thread but sets the interrupt flag to true.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  If an <i>InterruptedException</i> is caught it means that the 
+                  <i>Thread.interrupt</i> method is called by some code, somewhere on the currently
+                  running thread.
+                </td>
+              </tr>
+            </table> 
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Shared Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 98%;">
+              <tr>
+                <td>
+                  If multiple threads try to modify a shared resource at the same time then the final outcome is non
+                  deterministic. We must explicitly synchronize concurrent access to a shared resource in a 
+                  multi-threaded environment. 
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  When a thread enters synchronized code (normally by calling the synchronized method of that object)
+                  it takes the lock on that object and thus other threads cannot enters synchronized code because 
+                  there is only one lock per object.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Suppose you are buying theatre tickets online and after you pick your seats and are entering
+                  your credit card information, someone else buys that seat and they are no longer available.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Suppose multiple threads have access to a collection object and they are adding
+                  and removing at same time then there will be an error unless the collection is thread-safe.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Race Condition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Race condition occurs when two or more threads try to update mutable shared data at the same time.
+            Two threads simultaneously reading data from the same object is not a problem but if both 
+            threads are simultaneously try to update the same object or if one thread is updating the object
+            while the other is reading it then memory inconsistencies may arise. <br>
+            <br>
+            <ul>
+              <li><i>Read-read</i> sharing is safe</li>
+              <li>Both <i>read-write</i> and <i>write-write</i> races are a problem.</li>
+            </ul>
+            
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Deadlock</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            A deadlock occurs when there is more than one thread, each waiting for a resource held by another
+            which occurs when multiple threads acquires the same set of lock in different order.
+            The most obvious kind of resource is an object monitor but any resource that causes
+            blocking such as <em>wait-notify</em> can qualify. <br> <br>
+            Deadlock happens when two or more threads become interlocked:
+            <ul>
+              <li>Thread <code>A</code> holds the lock in <code>object1</code> but is waiting on <code>object2</code></li>
+              <li>Thread <code>B</code> holds the lock in <code>object2</code> but is waiting on <code>object1</code></li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Thread Synchronization</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Thread synchronization is a mechanism which ensures that two or more concurrent threads
+            do not execute some particular section of program especially critical section. 
+            There are two types of thread synchronization <em>mutual exclusion</em> and <br>
+            <em>inter-thread communication</em>. <br> <br>
+            Following are some classic problems of synchronization:
+            <ul>
+              <li>Producer-consumer problem</li>
+              <li>Readers-writers problem</li>
+              <li>Dining philosopher problem</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Mutual Exclusion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Mutual exclusion helps keep threads from interfering with each other while sharing data.
+            Mutual exclusion ensures that only one thread can have access to shared data at a time.
+            Mutual exclusion ensures that write functionality is thread-safe. 
+            Mutex is a program object which prevents simultaneous access to a shared data by multiple threads.
+            <br> <br>
+            Mutual exclusion can be achieved through:
+            <ul>
+              <li>Synchronized block</li>
+              <li>Synchronized method</li>
+              <li>Static synchronization</li>
+            </ul> <br>
+            <table class="one" style="width: 90%;">
+              <tr>
+                <th>Critical section</th>
+              </tr>
+              <tr>
+                <td>Critical section is region of the code where shared data between multiple threads is accessed. 
+                  Shared data is considered as a critical area.</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Monitor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding-right: 40px;">
+            Synchronization is built around an internal entity known as the monitor, monitors
+            are used to achieved mutual exclusion and threads cooperation.
+            A monitor is an entity that possesses a lock, a wait queue and an entry queue.
+            Every java objects has a monitor associated with them. <br> <br>
+            <table style="width: 96%; text-align: left;">
+              <tr>
+                <td>
+                  Lock enforces mutual exclusive access to synchronized code block or method
+                  invoked on the associated object
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Wait set is the set of all the threads waiting on an monitor object that is
+                  used <br> to provide coordination between multiple threads
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Entry set is the set of all the threads who has already requested
+                  for the lock and the lock is not acquired by them yet
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Lock</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 95%;">
+              <tr>
+                <td>A lock is a tool for controlling access to a shared resource by multiple threads</td>
+              </tr>
+              <tr>
+                <td>Every objects in java has an intrinsic lock associated with it</td>
+              </tr>
+              <tr>
+                <td>Only one thread at a time can acquire the lock and all access to the shared
+                  resource requires that the lock be acquired first</td>
+              </tr>
+              <tr>
+                <td>
+                  When a new thread tries to acquire the lock and if already a thread owns the lock
+                  then that thread will be waiting on the entry set to acquire the lock
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  When the thread which is acquired the lock completes execution of its critical section
+                  then it will release the lock
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Next thread will acquire the lock but this next thread is taken from the entry
+                  set and will be determined by JVM based on some criteria like FIFO
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Volatile Keyword</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding-right: 35px;">
+            Volatile keyword instructs JVM to read the value of the volatile variable from main
+                  memory and write value of the volatile variable to main memory. 
+                  Volatile keyword instructs JVM to do not cache value of the variable
+                  locally so that changes to that variable must be seen by all subsequent
+                  reads by other threads regardless of the synchronization.
+                  Volatile keyword provides visibility just like synchronization but scoped only to each read or write of the field.
+                  <i>Volatile</i> keyword ensures that <em>read functionality</em> is thread safe.
+                  <br> <br>
+            <table class="one" style="width: 93%;">
+              <tr>
+                <th>Visibility</th>
+              </tr>
+              <tr>
+                <td>Visibility means changes done by one thread are visible to other threads which ensures that read
+                  functionality is thread safe.</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>Synchronized Keyword</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding-right: 40px;">
+            <ul>
+              <li>A block of code marked with synchronized becomes a synchronized block</li>
+              <li>Keyword <i>synchronized</i> enforces exclusive access to the block of code</li>
+              <li>Only one thread is allowed to enter this block of code at the same time</li>
+              <li>Thread that first enters the synchronized block remains in runnable state</li>
+              <li>Synchronized blocks and synchronized methods are mutually exclusive</li>
+              <li>Synchronized method can static method or instance method</li>
+              <li>The synchronized keyword does not support fairness</li>
+              <li>Fairness property provides a lock to the longest waiting thread (contention)</li>
+              <li>Any thread can acquire lock once released, no preference can be specified</li>
+              <li>All other threads accessing the same block of code enters the blocked state</li>
+              <li>When a runnable thread exits the synchronized block then lock is released</li>
+              <li>Another thread is now allowed to enter the runnable state and place a new lock</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Synchronized Method</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 98%;">
+              <tr>
+                <td>
+                  If two or more threads modify an object then declare the methods that carry out<br>
+                  the modification as synchronized.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  If a class has one ore more synchronized methods, each object of the class gets a queue
+                  that holds all threads waiting to execute one of the synchronized methods.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  If a thread wants to execute a synchronized method on a given object, first it has to acquire the
+                  lock of that object. Once thread acquired the lock then it is allowed to execute any
+                  synchronized method on that object.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  When a thread calls a synchronized method on an object then 
+                  the JVM ckecks the monitor lock for that object.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  If the monitor lock is unowned then ownership is assigned to the calling thread
+                  which is then allowed to proceed with the method call.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  If the monitor lock is owned by another thread then the calling thread will be put on hold
+                  until the monitor lock becomes available.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  When a thread exits a synchronized method it releases the monitor lock, allowing
+                  a waiting thread (if any) to proceed with its synchronized method call.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Cooperation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Cooperation is achieved using the <em>wait set</em> which is associated with the monitor and
+            <em>wait-notify</em> mechanism. Cooperation
+            is important when one thread needs some data to be in a particular state and another
+            thread is responsible for getting the data into that state. <br> <br>
+            <table style="width: 93%;">
+              <tr>
+                <td>
+                  When a thread invokes the <em>wait</em> method respect to an object then the thread
+                  will be suspended and added to the wait set to wait until some other thread invokes
+                  <em>notify</em> or <em>notifyAll</em> on the same object.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  If a thread was put in the queue by a call to <strong>wait</strong> then it must be
+                  unfrozen by a call to <strong>notify</strong> before it can be scheduled for execution again.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Notify method is used for waking up threads that are in the wait set of the
+                  monitor of a particular object.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  A thread may call <strong>wait</strong>, <strong>notify</strong> or
+                  <strong>notifyAll</strong> on an object only if it owns
+                  the monitor lock of that object
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Wait</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 99%;">
+              <tr>
+                <td>
+                  Causes the current thread to wait until another thread invokes the <code>notify()</code>
+                  method or the <code>notifyAll()</code> method for this object
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  The thread releases ownership
+                  of this monitor and waits until another thread notifies threads waiting on this
+                  object's monitor to wake up either through <br> a call to the 
+                  <code>notify()</code> method or the <code>notifyAll()</code> method. 
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Notify</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 98%;">
+              <tr>
+                <td>Used to notify one thread that condition on which it is waiting has been satisfied</td>
+              </tr>
+              <tr>
+                <td>
+                  For all threads waiting in the wait set the method <i>notify</i> notifies anyone of them to wake up
+                  randomly
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Wakes up a single thread that is waiting on this object's monitor.
+                  If many threads are waiting on this object then one of them is chosen to be awakened.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  A thread waits on an object's monitor by calling one of the wait methods
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>NotifyAll</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 96%;">
+              <tr>
+                <td>Used to notify one or more threads that conditions they are waiting on has been satisfied</td>
+              </tr>
+              <tr>
+                <td>Wakes up all threads that are waiting on the wait set of this object's monitor</td>
+              </tr>
+              <tr>
+                <td>A thread waits on an object's monitor by calling one of the wait methods</td>
+              </tr>
+              <tr>
+                <td>
+                  The awakened threads will compete in the usual manner with any other threads
+                  that might be actively competing to synchronize on this object
+                </td>
+              </tr>
+              <tr>
+                <td>This method should only be called by a thread that is the owner of this object's monitor</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Blocking Methods</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 87%;">
+              <tr>
+                <td>
+                  Blocking methods are those which block the currently executing thread from further
+                  operation until the function returns.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Blocking methods poses significant threat to scalability of System.
+                  Imagine you are writing a client server application and you can only
+                  serve one client at a time because your code blocks.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  There are ways to mitigate blocking and using multiple threads for serving multiple
+                  clients is a classical solution of blocking call.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Locks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding-right: 35px;">
+            Synchronized keyword forces all lock acquisitions and releases to occur in a block structured
+            way, meaning when multiple locks are acquired they must be released  in the opposite order
+            and all locks must be released in the same method in which they were acquired.
+            Lock is acquired and released implicitly.
+            <br> <br>
+            The <em>reentrant lock</em> provides more flexibility which allows a lock to be acquired and released
+            in different scopes and allows multiple locks to be acquired and released in any order.
+            Lock is acquired and released using <em>lock</em> and <em>unlock</em> methods.
+            <br> <br>
+            <table class="one" style="width: 97%;">
+              <tr>
+                <th>Reentrant locks</th>
+              </tr>
+              <tr>
+                <td>Provides a convenient <em>tryLock</em> method which acquires
+                  lock only if it is available and not held by any other thread.
+                  This reduces the blocking of thread waiting for lock.
+                  The <em>tryLock</em> method backs out if the lock is not available immediately
+                  or before a timeout expires.
+                </td>
+              </tr>
+              <tr>
+                <td>Introduces boilerplate code which makes code less readabile</td>
+              </tr>
+              <tr>
+                <td>Now programmer is responsible for acquiring and releasing lock</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono just">
+      <thead>
+        <tr>
+          <th>Thread Pool</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding-right: 30px;">
+            The server programs such as database and web servers can simultaneously serves multiple clients.
+            An approach for building a server application would be to create a new thread each 
+            time a request arrives and service this new request in the newly created thread. 
+            While this approach seems simple to implement, it has significant disadvantages. 
+            A server that creates a new thread for every request would spend more time and 
+            consume more system resources in creating and destroying threads than processing 
+            actual requests. <br> <br>
+            <table style="width: 95%; text-align: left;">
+              <tr>
+                <td>
+                  Thread pool represents a group of worker threads that are waiting for the job and reused many times.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  A thread pool manages a set of unamed threads that perform work on request.
+                  Threads do not terminate right away. When one of the threads completes a task,
+                  the thread becomes idle, ready to be dispatched to another task.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  The submitted tasks are processed in order, usually faster than could be done by
+                  creating a thread per task.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  The overhead of creating and destroying threads is limited to creating and destroying
+                  just the number of active worker threads in the pool.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Processor utilization and throughput are improved by reducing contention <br> for resources.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>Future</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <table style="width: 92%;">
+              <tr>
+                <td>
+                  Future is placeholder for a value that will arrive sometime in the future.
+                  Value will arrive once thread finishes the execution.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  The Future has methods that allow you to either poll or block while waiting for the result to be ready.
+                  We can also cancel the task before or while it is executing through methods on future.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="mono">
+      <thead>
+        <tr>
+          <th>ExecutorService</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            The <strong>Executor</strong> and more expansive <strong>ExecutorService</strong> interfaces
+            define the contract for a component that can execute
+            tasks. Users of these interfaces can get a wide variety of
+            implementation behaviors behind a common interface. <br> <br>
+            The most generic <strong>Executor</strong> interface accepts jobs only in the form of
+            <strong>Runnables:</strong>
+            <ul>
+              <li><code>void execute(Runnable command)</code></li>
+            </ul> <br>
+            The <strong>ExecutorService</strong> extends <strong>Executor</strong> to add methods
+            that take both <strong>Runnable</strong> <br>
+            and <strong>Callable</strong> task and collections of tasks.
+            <br> <br>
+            <pre>
+
+      Future&lt;?> submit(Runnable task)
+      Future&lt;T> submit(Callable&lt;T> task)
+      Future&lt;T> submit(Runnable task, T result)
+      T invokeAny(Collection&lt;? extends Callable&lt;T>> tasks)
+      List&lt;Future&lt;T>> invokeAll(Collection&lt;? extends Callable&lt;T>> tasks)
+            </pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
